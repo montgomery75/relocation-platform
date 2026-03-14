@@ -9,15 +9,13 @@ async function sharedMetaData(params) {
   return {
     // enable this for resolving opengraph image
     // metadataBase: new URL(settings.url),
-    title: {
-      default:
-        settings?.title ||
-        "Stablo - Blog Template for Next.js & Sanity CMS",
-      template: "%s | Stablo"
-    },
-    description:
-      settings?.description ||
-      "Stablo - popular open-source next.js and sanity blog template",
+title: {
+  default:
+    "Move to Europe from the U.S. | Visa & Residency Help | Europe Relocator",
+  template: "%s | Europe Relocator"
+},
+description:
+  "Verified & AI-driven relocation service helping Americans move to Europe with visa guidance, country matching, and application preparation.",
     keywords: ["Next.js", "Sanity", "Tailwind CSS"],
     authors: [{ name: "Surjith" }],
     canonical: settings?.url,
@@ -32,8 +30,8 @@ async function sharedMetaData(params) {
         }
       ]
     },
-    twitter: {
-      title: settings?.title || "Stablo Template",
+ twitter: {
+  title: "Move to Europe from the U.S. | Europe Relocator",
       card: "summary_large_image"
     },
     robots: {
