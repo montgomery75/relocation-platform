@@ -1,14 +1,12 @@
 import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
-import { urlForImage } from "@/lib/sanity/image";
 import Navbar from "@/components/navbar";
 
 async function sharedMetaData(params) {
   const settings = await getSettings();
 
   return {
-    // enable this for resolving opengraph image
-    // metadataBase: new URL(settings.url),
+    metadataBase: new URL(settings.url),
 
     title: {
       default:
@@ -27,23 +25,32 @@ async function sharedMetaData(params) {
 
     authors: [{ name: "Europe Relocator" }],
 
-    canonical: settings?.url,
+    alternates: {
+      canonical: settings?.url
+    },
 
     openGraph: {
+      title: "Move to Europe from the U.S. | Europe Relocator",
+      description:
+        "Verified & AI-driven relocation service helping Americans move to Europe with visa guidance, country matching, and application preparation.",
+      url: settings?.url,
+      siteName: "Europe Relocator",
       images: [
         {
-          url:
-            urlForImage(settings?.openGraphImage)?.src ||
-            "/img/opengraph.jpg",
-          width: 800,
-          height: 600
+          url: "/og/homepage.png",
+          width: 1200,
+          height: 630
         }
-      ]
+      ],
+      type: "website"
     },
 
     twitter: {
       title: "Move to Europe from the U.S. | Europe Relocator",
-      card: "summary_large_image"
+      description:
+        "Verified & AI-driven relocation service helping Americans move to Europe with visa guidance, country matching, and application preparation.",
+      card: "summary_large_image",
+      images: ["/og/homepage.png"]
     },
 
     robots: {
@@ -63,9 +70,7 @@ export default async function Layout({ children, params }) {
   return (
     <>
       <Navbar {...settings} />
-
       <div>{children}</div>
-
       <Footer {...settings} />
     </>
   );
