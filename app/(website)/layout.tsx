@@ -9,16 +9,26 @@ async function sharedMetaData(params) {
   return {
     // enable this for resolving opengraph image
     // metadataBase: new URL(settings.url),
-title: {
-  default:
-    "Move to Europe from the U.S. | Visa & Residency Help | Europe Relocator",
-  template: "%s | Europe Relocator"
-},
-description:
-  "Verified & AI-driven relocation service helping Americans move to Europe with visa guidance, country matching, and application preparation.",
-    keywords: ["Next.js", "Sanity", "Tailwind CSS"],
-    authors: [{ name: "Surjith" }],
+
+    title: {
+      default:
+        "Move to Europe from the U.S. | Visa & Residency Help | Europe Relocator",
+      template: "%s | Europe Relocator"
+    },
+
+    description:
+      "Verified & AI-driven relocation service helping Americans move to Europe with visa guidance, country matching, and application preparation.",
+
+    icons: {
+      icon: "/favicon.png"
+    },
+
+    keywords: ["Move to Europe", "Visa Help", "Residency", "Europe Relocator"],
+
+    authors: [{ name: "Europe Relocator" }],
+
     canonical: settings?.url,
+
     openGraph: {
       images: [
         {
@@ -30,10 +40,12 @@ description:
         }
       ]
     },
- twitter: {
-  title: "Move to Europe from the U.S. | Europe Relocator",
+
+    twitter: {
+      title: "Move to Europe from the U.S. | Europe Relocator",
       card: "summary_large_image"
     },
+
     robots: {
       index: false,
       follow: false
@@ -47,6 +59,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Layout({ children, params }) {
   const settings = await getSettings();
+
   return (
     <>
       <Navbar {...settings} />
@@ -57,5 +70,6 @@ export default async function Layout({ children, params }) {
     </>
   );
 }
+
 // enable revalidate for all pages in this layout
 // export const revalidate = 60;
