@@ -6,7 +6,7 @@ async function sharedMetaData(params) {
   const settings = await getSettings();
 
   return {
-    metadataBase: new URL(settings.url),
+    metadataBase: new URL("https://www.europerelocator.com"),
 
     title: {
       default:
