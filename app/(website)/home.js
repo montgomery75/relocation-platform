@@ -8,7 +8,7 @@ export default function HomePage({ posts = [], homepage }) {
   return (
     <Container>
       {/* HERO */}
-      <section className="py-24 md:py-32">
+      <section className="py-2 md:py-2">
         <div className="mx-auto max-w-4xl text-center">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
             Verified & AI-driven relocation service
@@ -16,7 +16,7 @@ export default function HomePage({ posts = [], homepage }) {
 
           <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white md:text-6xl">
             {homepage?.headline ||
-              "Move from the US to Europe with Confidence"}
+              "TEST HOMEPAGE"}
           </h1>
 
           <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-gray-600 dark:text-gray-300 md:text-xl">
