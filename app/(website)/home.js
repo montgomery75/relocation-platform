@@ -16,7 +16,7 @@ export default function HomePage({ posts = [], homepage }) {
 
           <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white md:text-6xl">
             {homepage?.headline ||
-              "TEST HOMEPAGE"}
+              "Move to Germany from the US in confidence"}
           </h1>
 
           <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-gray-600 dark:text-gray-300 md:text-xl">

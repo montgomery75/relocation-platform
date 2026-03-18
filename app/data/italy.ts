@@ -1,5 +1,5 @@
-export const italyData = {
-  countryName: 'Italy',
+import type { CountryPageData } from './types'
+export const italyData: CountryPageData = {  countryName: 'Italy',
 
   hero: {
     eyebrow: 'Italy Guide for Americans',

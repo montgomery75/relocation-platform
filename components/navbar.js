@@ -1,6 +1,5 @@
 "use client";
 
-import { Fragment } from "react";
 import { Menu, Transition, Disclosure } from "@headlessui/react";
 import Container from "@/components/container";
 import Link from "next/link";
@@ -49,26 +48,28 @@ export default function Navbar() {
             <>
               <div className="flex flex-wrap justify-between md:flex-nowrap md:gap-10">
                 <div className="order-1 hidden w-full flex-col items-center justify-start md:order-none md:flex md:w-auto md:flex-1 md:flex-row md:justify-end">
-                  {leftmenu.map((item, index) => (
-                    <Fragment key={`${item.label}${index}`}>
-                      {item.children && item.children.length > 0 ? (
+                  {leftmenu.map((item, index) => {
+                    if (item.children && item.children.length > 0) {
+                      return (
                         <DropdownMenu
-                          menu={item}
                           key={`${item.label}${index}`}
+                          menu={item}
                           items={item.children}
                         />
-                      ) : (
-                        <Link
-                          href={item.href}
-                          key={`${item.label}${index}`}
-                          className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-                          target={item.external ? "_blank" : ""}
-                          rel={item.external ? "noopener" : ""}>
-                          {item.label}
-                        </Link>
-                      )}
-                    </Fragment>
-                  ))}
+                      );
+                    }
+
+                    return (
+                      <Link
+                        href={item.href}
+                        key={`${item.label}${index}`}
+                        className="px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                        target={item.external ? "_blank" : ""}
+                        rel={item.external ? "noopener" : ""}>
+                        {item.label}
+                      </Link>
+                    );
+                  })}
                 </div>
 
                 <div className="flex w-full items-center justify-between py-2 md:w-auto">
@@ -90,14 +91,13 @@ export default function Navbar() {
                       className="h-6 w-6 fill-current"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24">
-                      {open && (
+                      {open ? (
                         <path
                           fillRule="evenodd"
                           clipRule="evenodd"
                           d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
                         />
-                      )}
-                      {!open && (
+                      ) : (
                         <path
                           fillRule="evenodd"
                           d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
@@ -108,61 +108,65 @@ export default function Navbar() {
                 </div>
 
                 <div className="order-2 hidden w-full flex-col items-center justify-start md:order-none md:flex md:w-auto md:flex-1 md:flex-row">
-                  {rightmenu.map((item, index) => (
-                    <Fragment key={`${item.label}${index}`}>
-                      {item.children && item.children.length > 0 ? (
+                  {rightmenu.map((item, index) => {
+                    if (item.children && item.children.length > 0) {
+                      return (
                         <DropdownMenu
-                          menu={item}
                           key={`${item.label}${index}`}
+                          menu={item}
                           items={item.children}
                         />
-                      ) : (
-                        <Link
-                          href={item.href}
-                          key={`${item.label}${index}`}
-                          className={
-                            item.label === "Start Free"
-                              ? "rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-700 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700"
-                              : "px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-                          }
-                          target={item.external ? "_blank" : ""}
-                          rel={item.external ? "noopener" : ""}>
-                          <span>{item.label}</span>
-                          {item.badge && (
-                            <span className="ml-2 rounded bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-600 dark:bg-cyan-200 dark:text-blue-800">
-                              {item.badge}
-                            </span>
-                          )}
-                        </Link>
-                      )}
-                    </Fragment>
-                  ))}
+                      );
+                    }
+
+                    return (
+                      <Link
+                        href={item.href}
+                        key={`${item.label}${index}`}
+                        className={
+                          item.label === "Start Free"
+                            ? "rounded-lg bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-700 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-700"
+                            : "px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                        }
+                        target={item.external ? "_blank" : ""}
+                        rel={item.external ? "noopener" : ""}>
+                        <span>{item.label}</span>
+                        {item.badge && (
+                          <span className="ml-2 rounded bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-600 dark:bg-cyan-200 dark:text-blue-800">
+                            {item.badge}
+                          </span>
+                        )}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
 
               <Disclosure.Panel>
                 <div className="order-2 -ml-4 mt-4 flex w-full flex-col items-center justify-start md:hidden">
-                  {mobilemenu.map((item, index) => (
-                    <Fragment key={`${item.label}${index}`}>
-                      {item.children && item.children.length > 0 ? (
+                  {mobilemenu.map((item, index) => {
+                    if (item.children && item.children.length > 0) {
+                      return (
                         <DropdownMenu
-                          menu={item}
                           key={`${item.label}${index}`}
+                          menu={item}
                           items={item.children}
                           mobile={true}
                         />
-                      ) : (
-                        <Link
-                          href={item.href}
-                          key={`${item.label}${index}`}
-                          className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
-                          target={item.external ? "_blank" : ""}
-                          rel={item.external ? "noopener" : ""}>
-                          {item.label}
-                        </Link>
-                      )}
-                    </Fragment>
-                  ))}
+                      );
+                    }
+
+                    return (
+                      <Link
+                        href={item.href}
+                        key={`${item.label}${index}`}
+                        className="w-full px-5 py-2 text-sm font-medium text-gray-600 hover:text-blue-500 dark:text-gray-400"
+                        target={item.external ? "_blank" : ""}
+                        rel={item.external ? "noopener" : ""}>
+                        {item.label}
+                      </Link>
+                    );
+                  })}
                 </div>
               </Disclosure.Panel>
             </>
@@ -193,7 +197,6 @@ const DropdownMenu = ({ menu, items, mobile }) => {
           </Menu.Button>
 
           <Transition
-            as={Fragment}
             enter="lg:transition lg:ease-out lg:duration-100"
             enterFrom="lg:transform lg:opacity-0 lg:scale-95"
             enterTo="lg:transform lg:opacity-100 lg:scale-100"

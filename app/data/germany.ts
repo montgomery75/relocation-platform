@@ -1,5 +1,5 @@
-export const germanyData = {
-countryName: 'Germany',
+import type { CountryPageData } from './types'
+export const germanyData: CountryPageData = {countryName: 'Germany',
   hero: {
     eyebrow: 'Germany Guide for Americans',
     title: 'Move to Germany from the USA',
