@@ -1,15 +1,15 @@
 type QuestionItem = {
-  question: string
-  shortAnswer: string
-  longAnswer: string
-  source: string
-}
+  question: string;
+  shortAnswer: string;
+  longAnswer: string;
+  source: string;
+};
 
 type CountryQuestionsProps = {
-  heading: string
-  intro: string
-  items: QuestionItem[]
-}
+  heading: string;
+  intro: string;
+  items: QuestionItem[];
+};
 
 export default function CountryQuestions({
   heading,
@@ -17,48 +17,36 @@ export default function CountryQuestions({
   items,
 }: CountryQuestionsProps) {
   return (
-    <section
-      style={{
-        marginTop: '30px',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '760px',
-          marginBottom: '24px',
-        }}
-      >
-        <h2 style={{ marginTop: 0 }}>{heading}</h2>
-        <p style={{ color: '#5f6c85', marginBottom: 0 }}>{intro}</p>
+    <section className="mt-[30px]">
+      <div className="mb-6 max-w-[760px]">
+        <h2 className="mt-0 text-3xl font-bold tracking-tight text-gray-900">
+          {heading}
+        </h2>
+        <p className="mb-0 text-base leading-7 text-[#5f6c85]">{intro}</p>
       </div>
 
-      <div
-        style={{
-          display: 'grid',
-          gap: '18px',
-        }}
-      >
+      <div className="grid gap-5">
         {items.map((item) => (
           <div
             key={item.question}
-            style={{
-              background: '#ffffff',
-              border: '1px solid #d9e3f5',
-              borderRadius: '18px',
-              padding: '24px',
-            }}
+            className="rounded-[18px] border border-[#d9e3f5] bg-white p-6"
           >
-            <h3 style={{ marginTop: 0 }}>{item.question}</h3>
-            <p>
+            <h3 className="mt-0 text-xl font-semibold text-[#1f5eff]">
+              {item.question}
+            </h3>
+
+            <p className="mt-3">
               <strong>{item.shortAnswer}</strong>
             </p>
-            <p style={{ color: '#162033' }}>{item.longAnswer}</p>
-            <div style={{ color: '#5f6c85', fontSize: '14px' }}>
+
+            <p className="mt-3 text-[#162033]">{item.longAnswer}</p>
+
+            <div className="mt-4 text-sm text-[#5f6c85]">
               Source: {item.source}
             </div>
           </div>
         ))}
       </div>
     </section>
-  )
+  );
 }

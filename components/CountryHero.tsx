@@ -1,13 +1,13 @@
-import CountryCTA from '@/components/CountryCTA'
+import CountryCtaSection from "@/components/CountryCtaSection";
 
 type CountryHeroProps = {
-  eyebrow: string
-  title: string
-  subtitle: string
-  factCheckedDate: string
-  sourcesText: string
-  introText: string
-}
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  factCheckedDate: string;
+  sourcesText: string;
+  introText: string;
+};
 
 export default function CountryHero({
   eyebrow,
@@ -18,90 +18,41 @@ export default function CountryHero({
   introText,
 }: CountryHeroProps) {
   return (
-    <section
-      style={{
-        background: '#ffffff',
-        border: '1px solid #d9e3f5',
-        borderRadius: '24px',
-        padding: '40px',
-        boxShadow: '0 14px 40px rgba(22, 32, 51, 0.08)',
-      }}
-    >
-      <div
-        style={{
-          display: 'inline-block',
-          background: 'rgba(31,94,255,0.09)',
-          color: '#1546c5',
-          padding: '8px 14px',
-          borderRadius: '999px',
-          fontWeight: 700,
-          fontSize: '14px',
-          marginBottom: '18px',
-        }}
-      >
+    <section className="rounded-[24px] border border-[#d9e3f5] bg-white p-10 shadow-[0_14px_40px_rgba(22,32,51,0.08)]">
+      <div className="mb-[18px] inline-block rounded-full bg-[rgba(31,94,255,0.09)] px-[14px] py-[8px] text-sm font-bold text-[#1546c5]">
         {eyebrow}
       </div>
 
-      <h1
-        style={{
-          fontSize: '48px',
-          lineHeight: 1.1,
-          margin: '0 0 16px 0',
-          color: '#162033',
-        }}
-      >
+      <h1 className="mb-4 text-[48px] leading-[1.1] text-[#162033]">
         {title}
       </h1>
 
-      <p
-        style={{
-          fontSize: '20px',
-          lineHeight: 1.5,
-          color: '#5f6c85',
-          maxWidth: '700px',
-          margin: '0 0 24px 0',
-        }}
-      >
+      <p className="mb-6 max-w-[700px] text-[20px] leading-[1.5] text-[#5f6c85]">
         {subtitle}
       </p>
 
-      <div
-        style={{
-          background: '#eff8f2',
-          border: '1px solid #cfe6d6',
-          borderRadius: '18px',
-          padding: '18px 20px',
-          marginBottom: '24px',
-        }}
-      >
-        <div style={{ fontWeight: 800, color: '#21633b', marginBottom: '6px' }}>
+      <div className="mb-6 rounded-[18px] border border-[#cfe6d6] bg-[#eff8f2] px-5 py-[18px]">
+        <div className="mb-[6px] font-extrabold text-[#21633b]">
           ✔ Verified immigration information
         </div>
-        <div style={{ color: '#5f6c85', fontSize: '15px', marginBottom: '4px' }}>
+        <div className="mb-1 text-[15px] text-[#5f6c85]">
           Last fact-checked: {factCheckedDate}
         </div>
-        <div style={{ color: '#5f6c85', fontSize: '15px' }}>
+        <div className="text-[15px] text-[#5f6c85]">
           Sources monitored: {sourcesText}
         </div>
       </div>
 
-      <p
-        style={{
-          fontSize: '17px',
-          lineHeight: 1.6,
-          color: '#162033',
-          maxWidth: '760px',
-          margin: '0 0 28px 0',
-        }}
-      >
+      <p className="mb-8 max-w-[760px] text-[17px] leading-[1.6] text-[#162033]">
         {introText}
       </p>
 
-      <CountryCTA
-        primaryLabel="Check if Germany fits you"
-        secondaryLabel="View all visa options"
-        tertiaryLabel="Get your eligibility score"
+      {/* HERO CTA (compact, consistent system, no flag) */}
+      <CountryCtaSection
+        variant="compact"
+        country="Germany"
+        visaAdjective="German"
       />
     </section>
-  )
+  );
 }

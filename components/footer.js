@@ -13,7 +13,7 @@ export default function Footer(props) {
               EuropeRelocator
             </div>
             <p className="mt-3 max-w-sm text-sm leading-6 text-gray-600 dark:text-gray-400">
-              Verified & AI driven relocation service for Americans moving to
+              Verified &amp; AI driven relocation service for Americans moving to
               Europe.
             </p>
           </div>
@@ -56,8 +56,18 @@ export default function Footer(props) {
           </div>
         </div>
 
-        <div className="border-t border-gray-100 py-6 text-center text-sm text-gray-500 dark:border-gray-800 dark:text-gray-500">
-          Copyright © {year} EuropeRelocator. All rights reserved.
+        <div className="border-t border-gray-100 py-6 dark:border-gray-800">
+          <p className="mx-auto max-w-4xl text-center text-sm leading-6 text-gray-500 dark:text-gray-500">
+            EuropeRelocator provides general informational and organizational
+            support only and does not provide legal advice, legal
+            representation, or tax advice. Immigration outcomes depend on your
+            individual circumstances and official government review. For legal
+            advice, please consult a qualified immigration attorney.
+          </p>
+
+          <div className="mt-4 text-center text-sm text-gray-500 dark:text-gray-500">
+            Copyright © {year} EuropeRelocator. All rights reserved.
+          </div>
         </div>
       </Container>
     </footer>
