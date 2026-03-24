@@ -51,6 +51,22 @@ const faqSchema = {
         text: "Not usually for the Blue Card itself, but German is important later for settlement and daily life.",
       },
     },
+    {
+      "@type": "Question",
+      name: "What jobs qualify for the EU Blue Card in Germany?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Many professional roles can qualify if they meet the salary threshold and match the applicant’s qualifications. Common examples include IT, engineering, healthcare, and other highly skilled fields.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What if you do not qualify for the EU Blue Card?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "You may still qualify for another German residence route, such as the Opportunity Card or another work visa, depending on your background and plans.",
+      },
+    },
   ],
 };
 
@@ -263,7 +279,6 @@ const htmlContent = `
 
   .grid-3,
   .grid-2,
-  .timeline,
   .faq-grid,
   .compare-grid,
   .glossary-grid,
@@ -413,21 +428,6 @@ const htmlContent = `
     margin-bottom: 4px;
   }
 
-  .timeline { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
-  .step {
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--blue-soft);
-    color: var(--blue-dark);
-    font-weight: 800;
-    margin-bottom: 14px;
-  }
-
   .compare {
     padding: 22px;
     border-radius: 22px;
@@ -538,13 +538,18 @@ const htmlContent = `
     font-size: 15px;
   }
 
+  .inline-link {
+    color: var(--blue-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   @media (max-width: 1020px) {
     .hero-grid,
     .eligibility-box,
     .cta,
     .grid-2,
     .grid-3,
-    .timeline,
     .compare-grid,
     .faq-grid,
     .glossary-grid,
@@ -589,6 +594,9 @@ const htmlContent = `
         <p class="muted" style="font-size:16px; margin:0 0 8px; max-width:700px;">
           For many applicants, this is one of the most predictable work visa routes — but only if all three pieces clearly fit together.
         </p>
+        <p class="muted" style="font-size:16px; margin:0; max-width:700px;">
+          This page shows you how to tell if you qualify — and what can go wrong.
+        </p>
 
         <div class="hero-actions">
           <a href="#eligibility" class="btn btn-primary">See your personalized visa plan</a>
@@ -618,7 +626,7 @@ const htmlContent = `
             <span>Spouses and children can usually join, and the spouse can generally work in Germany.</span>
           </div>
           <div class="score-item">
-            <strong>Rules-based approval</strong>
+            <strong>Approval follows clear rules</strong>
             <span>If your case fits the salary, qualification, and job framework, the visa is often more predictable than other routes.</span>
           </div>
         </div>
@@ -939,6 +947,13 @@ const htmlContent = `
     <div class="section-box">
       <span class="small-label">Comparison</span>
       <h2>EU Blue Card vs Opportunity Card</h2>
+      <p class="section-intro">
+        If you do not yet have a qualifying job offer, the
+        <a class="inline-link" href="/germany/opportunity-card">Opportunity Card</a>
+        may be the better starting point. You can also browse the
+        <a class="inline-link" href="/germany/visa">Germany visa overview</a>
+        if you want to compare routes first.
+      </p>
       <div class="compare-grid">
         <div class="compare good">
           <h3>EU Blue Card</h3>
@@ -1103,12 +1118,20 @@ const htmlContent = `
         <p class="muted">Not usually as a basic Blue Card requirement. But German matters later for settlement, daily life, and some regulated professions or employers.</p>
       </article>
       <article class="faq-item">
+        <h3>What jobs qualify for the EU Blue Card in Germany?</h3>
+        <p class="muted">Many professional roles can qualify if they meet the salary threshold and match your qualifications. Common examples include IT, engineering, healthcare, and other highly skilled fields.</p>
+      </article>
+      <article class="faq-item">
         <h3>Is the EU Blue Card better than a normal work visa?</h3>
         <p class="muted">Often yes for qualified professionals, especially because of the long-term residence benefits and structured family advantages. But it still depends on salary and qualification fit.</p>
       </article>
       <article class="faq-item">
         <h3>What if you do not qualify?</h3>
-        <p class="muted">You may still qualify for another German work residence route. A good visa system should show both your best-fit option and your friction points.</p>
+        <p class="muted">You may still qualify for another German work residence route. A good visa system should show both your best-fit option and your next options, such as the <a class="inline-link" href="/germany/opportunity-card">Opportunity Card</a>.</p>
+      </article>
+      <article class="faq-item">
+        <h3>Can you apply from inside Germany?</h3>
+        <p class="muted">In some cases, yes. U.S. citizens often have more flexibility than many other nationalities, but the exact route still depends on timing, documents, and local authority practice.</p>
       </article>
     </div>
   </section>
@@ -1116,10 +1139,10 @@ const htmlContent = `
   <section class="section">
     <div class="cta">
       <div>
-        <span class="small-label">Your personal plan</span>
-        <h3>We make it simple for you</h3>
+        <span class="small-label">Next step</span>
+        <h3>Know exactly what to do next</h3>
         <p>
-          You don’t have to figure this out on your own. We guide you step by step, so you always know what to do next. This turns complex requirements into a clear plan you can actually follow.
+          We guide you through the right questions, show you where you stand, and turn the rules into a step-by-step plan you can actually follow.
         </p>
       </div>
       <div class="actions">
