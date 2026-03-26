@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import CountryPageTemplate from "@/components/CountryPageTemplate";
-import CountryCtaSection from "@/components/CountryCtaSection";
 import { fetcher } from "@/lib/sanity/client";
 import { buildCountryMetadata } from "@/lib/seo/countryMetadata";
 
@@ -41,38 +40,58 @@ function SourcesVerificationSection() {
   ];
 
   return (
-    <section className="border-t border-gray-200 bg-gray-50">
-      <div className="mx-auto max-w-6xl px-6 py-14">
-        <div className="max-w-3xl">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-            Sources &amp; Verification
-          </h2>
-          <p className="mt-4 text-base leading-7 text-gray-600">
+    <section className="er-section">
+      <div className="er-page">
+        <div className="er-section-box">
+          <h2>Sources &amp; Verification</h2>
+
+          <p className="er-section-intro er-max-760">
             EuropeRelocator content is reviewed against official government and
             institutional sources. We aim to keep this page structured,
             practical, and up to date.
           </p>
-          <p className="mt-3 text-sm text-gray-500">
+
+          <p className="er-muted er-text-sm er-mb-20">
             Last fact-checked: March 2026
           </p>
-        </div>
 
-        <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-800">
-            Monitored sources
-          </h3>
+          <div className="er-card">
+            <h3
+              style={{
+                fontSize: "14px",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                marginBottom: "12px",
+              }}
+            >
+              Monitored sources
+            </h3>
 
-          <ul className="mt-4 space-y-3">
-            {sources.map((source) => (
-              <li key={source} className="flex items-start gap-3 text-gray-700">
-                <span className="mt-2 h-2 w-2 rounded-full bg-blue-600" />
-                <span>{source}</span>
-              </li>
-            ))}
-          </ul>
+            <div className="er-source-list">
+              {sources.map((source) => (
+                <div key={source}>{source}</div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function GermanyPageNotFound() {
+  return (
+    <main className="er-page">
+      <section className="er-section">
+        <div className="er-section-box">
+          <span className="er-small-label">Content status</span>
+          <h1>Germany page not found</h1>
+          <p className="er-section-intro">
+            No Germany country page was returned from Sanity.
+          </p>
+        </div>
+      </section>
+    </main>
   );
 }
 
@@ -87,24 +106,10 @@ export default async function GermanyPage() {
       <Navbar {...settings} />
 
       {!data ? (
-        <main className="mx-auto max-w-6xl px-6 py-24">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Germany page not found
-          </h1>
-          <p className="mt-4 text-gray-600">
-            No Germany country page was returned from Sanity.
-          </p>
-        </main>
+        <GermanyPageNotFound />
       ) : (
         <>
           <CountryPageTemplate data={data} />
-
-          <CountryCtaSection
-            variant="expanded"
-            country="Germany"
-            visaAdjective="German"
-          />
-
           <SourcesVerificationSection />
         </>
       )}

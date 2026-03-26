@@ -27,13 +27,15 @@ export default function HomePage({ posts = [], homepage }) {
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href={homepage?.ctaLink || "/countries"}
-              className="inline-flex min-w-[220px] items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-700">
+              className="er-btn er-btn-primary"
+            >
               {homepage?.ctaText || "Find Your Best-Fit Country"}
             </Link>
 
             <Link
               href="/how-it-works"
-              className="inline-flex min-w-[220px] items-center justify-center rounded-lg border border-gray-300 px-6 py-3 text-base font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800">
+              className="er-btn er-btn-secondary"
+            >
               See How It Works
             </Link>
           </div>
@@ -42,17 +44,17 @@ export default function HomePage({ posts = [], homepage }) {
 
       {/* TRUST STRIP */}
       <section className="pb-10 md:pb-14">
-        <div className="grid gap-4 rounded-2xl border border-gray-200 bg-gray-50 p-6 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 md:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-xl bg-white p-4 dark:bg-gray-800">
+        <div className="grid gap-4 rounded-[20px] border border-[#d9e3f5] bg-[#f8fbff] p-6 text-sm text-gray-700 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-[16px] bg-white p-4 shadow-[0_6px_18px_rgba(22,32,51,0.05)]">
             Verified relocation guidance
           </div>
-          <div className="rounded-xl bg-white p-4 dark:bg-gray-800">
+          <div className="rounded-[16px] bg-white p-4 shadow-[0_6px_18px_rgba(22,32,51,0.05)]">
             AI-powered country &amp; visa matching
           </div>
-          <div className="rounded-xl bg-white p-4 dark:bg-gray-800">
+          <div className="rounded-[16px] bg-white p-4 shadow-[0_6px_18px_rgba(22,32,51,0.05)]">
             Structured relocation planning system
           </div>
-          <div className="rounded-xl bg-white p-4 dark:bg-gray-800">
+          <div className="rounded-[16px] bg-white p-4 shadow-[0_6px_18px_rgba(22,32,51,0.05)]">
             Built for Americans relocating to Europe
           </div>
         </div>
@@ -70,7 +72,7 @@ export default function HomePage({ posts = [], homepage }) {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
               1
             </div>
@@ -83,7 +85,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
               2
             </div>
@@ -96,7 +98,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
               3
             </div>
@@ -113,7 +115,8 @@ export default function HomePage({ posts = [], homepage }) {
         <div className="mt-8 flex justify-center">
           <Link
             href={homepage?.ctaLink || "/countries"}
-            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-700">
+            className="er-btn er-btn-primary"
+          >
             {homepage?.ctaText || "Find Your Best-Fit Country"}
           </Link>
         </div>
@@ -132,7 +135,7 @@ export default function HomePage({ posts = [], homepage }) {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <div className="mb-3 text-2xl">🌍</div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               Country Match Tool
@@ -143,7 +146,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <div className="mb-3 text-2xl">📋</div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               Visa Eligibility Checker
@@ -154,7 +157,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <div className="mb-3 text-2xl">⚙️</div>
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
               Relocation Complexity Check
@@ -188,7 +191,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-900">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-[#f8fbff] p-6 shadow-[0_8px_24px_rgba(22,32,51,0.05)]">
             <ul className="space-y-4 text-gray-700 dark:text-gray-300">
               <li>• Verified relocation guidance</li>
               <li>• AI-supported matching and analysis</li>
@@ -218,7 +221,7 @@ export default function HomePage({ posts = [], homepage }) {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Americans retiring in Europe
             </h3>
@@ -228,7 +231,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Dual citizens returning to Europe
             </h3>
@@ -238,7 +241,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Remote workers and self-employed professionals
             </h3>
@@ -248,7 +251,7 @@ export default function HomePage({ posts = [], homepage }) {
             </p>
           </div>
 
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+          <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Couples with mixed citizenship
             </h3>
@@ -262,7 +265,8 @@ export default function HomePage({ posts = [], homepage }) {
         <div className="mt-8 flex justify-center">
           <Link
             href={homepage?.ctaLink || "/countries"}
-            className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-700">
+            className="er-btn er-btn-primary"
+          >
             {homepage?.ctaText || "Find Your Best-Fit Country"}
           </Link>
         </div>
@@ -270,7 +274,7 @@ export default function HomePage({ posts = [], homepage }) {
 
       {/* WHAT YOU GET */}
       <section className="py-14 md:py-18">
-        <div className="rounded-3xl bg-blue-50 px-6 py-10 dark:bg-blue-950/30 md:px-10">
+        <div className="rounded-[24px] bg-blue-50 px-6 py-10 dark:bg-blue-950/30 md:px-10">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white md:text-4xl">
               What you get
@@ -282,19 +286,19 @@ export default function HomePage({ posts = [], homepage }) {
           </div>
 
           <div className="mx-auto mt-10 grid max-w-4xl gap-4 md:grid-cols-2">
-            <div className="rounded-xl bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
+            <div className="rounded-[16px] bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
               A shortlist of matching European countries
             </div>
-            <div className="rounded-xl bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
+            <div className="rounded-[16px] bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
               Realistic residence and visa pathways
             </div>
-            <div className="rounded-xl bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
+            <div className="rounded-[16px] bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
               A clearer relocation strategy
             </div>
-            <div className="rounded-xl bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
+            <div className="rounded-[16px] bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300">
               Personalized requirements and document overview
             </div>
-            <div className="rounded-xl bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300 md:col-span-2">
+            <div className="rounded-[16px] bg-white p-5 text-gray-700 shadow-sm dark:bg-gray-800 dark:text-gray-300 md:col-span-2">
               A structured relocation planning process with clearer next steps
             </div>
           </div>
@@ -473,8 +477,8 @@ export default function HomePage({ posts = [], homepage }) {
                 </div>
 
                 <ul className="mt-5 divide-y divide-blue-200 sm:mt-6">
-                  <li className="flex gap-3 py-3 items-start">
-                    <span className="pt-0.5 text-blue-600 font-bold">✓</span>
+                  <li className="flex items-start gap-3 py-3">
+                    <span className="pt-0.5 font-bold text-blue-600">✓</span>
                     <div>
                       <div className="font-semibold text-slate-950">
                         Eligibility assessment
@@ -484,8 +488,8 @@ export default function HomePage({ posts = [], homepage }) {
                       </div>
                     </div>
                   </li>
-                  <li className="flex gap-3 py-3 items-start">
-                    <span className="pt-0.5 text-blue-600 font-bold">✓</span>
+                  <li className="flex items-start gap-3 py-3">
+                    <span className="pt-0.5 font-bold text-blue-600">✓</span>
                     <div>
                       <div className="font-semibold text-slate-950">
                         Complexity score & risk insights
@@ -495,8 +499,8 @@ export default function HomePage({ posts = [], homepage }) {
                       </div>
                     </div>
                   </li>
-                  <li className="flex gap-3 py-3 items-start">
-                    <span className="pt-0.5 text-blue-600 font-bold">✓</span>
+                  <li className="flex items-start gap-3 py-3">
+                    <span className="pt-0.5 font-bold text-blue-600">✓</span>
                     <div>
                       <div className="font-semibold text-slate-950">
                         Step-by-step roadmap
@@ -506,8 +510,8 @@ export default function HomePage({ posts = [], homepage }) {
                       </div>
                     </div>
                   </li>
-                  <li className="flex gap-3 py-3 items-start">
-                    <span className="pt-0.5 text-blue-600 font-bold">✓</span>
+                  <li className="flex items-start gap-3 py-3">
+                    <span className="pt-0.5 font-bold text-blue-600">✓</span>
                     <div>
                       <div className="font-semibold text-slate-950">
                         Document checklist
@@ -517,8 +521,8 @@ export default function HomePage({ posts = [], homepage }) {
                       </div>
                     </div>
                   </li>
-                  <li className="flex gap-3 py-3 items-start">
-                    <span className="pt-0.5 text-blue-600 font-bold">✓</span>
+                  <li className="flex items-start gap-3 py-3">
+                    <span className="pt-0.5 font-bold text-blue-600">✓</span>
                     <div>
                       <div className="font-semibold text-slate-950">
                         Timeline estimate
@@ -528,8 +532,8 @@ export default function HomePage({ posts = [], homepage }) {
                       </div>
                     </div>
                   </li>
-                  <li className="flex gap-3 py-3 items-start">
-                    <span className="pt-0.5 text-blue-600 font-bold">✓</span>
+                  <li className="flex items-start gap-3 py-3">
+                    <span className="pt-0.5 font-bold text-blue-600">✓</span>
                     <div>
                       <div className="font-semibold text-slate-950">
                         Critical warnings
@@ -560,7 +564,7 @@ export default function HomePage({ posts = [], homepage }) {
           </div>
 
           <div className="mt-10 space-y-6">
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Is this only for Germany?
               </h3>
@@ -571,7 +575,7 @@ export default function HomePage({ posts = [], homepage }) {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Can this help if I’m retired?
               </h3>
@@ -582,7 +586,7 @@ export default function HomePage({ posts = [], homepage }) {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Does this replace an immigration lawyer?
               </h3>
@@ -593,7 +597,7 @@ export default function HomePage({ posts = [], homepage }) {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,32,51,0.06)]">
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Do I need to create an account immediately?
               </h3>
@@ -619,7 +623,7 @@ export default function HomePage({ posts = [], homepage }) {
           </div>
 
           <div className="mt-10 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-            {featuredPosts.map(post => (
+            {featuredPosts.map((post) => (
               <PostList key={post._id} post={post} aspect="square" />
             ))}
           </div>
@@ -627,7 +631,8 @@ export default function HomePage({ posts = [], homepage }) {
           <div className="mt-8 flex justify-center">
             <Link
               href="/archive"
-              className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-6 py-3 text-base font-semibold text-gray-700 transition hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700">
+              className="er-btn er-btn-secondary"
+            >
               View All Articles
             </Link>
           </div>
@@ -636,7 +641,7 @@ export default function HomePage({ posts = [], homepage }) {
 
       {/* FINAL CTA */}
       <section className="py-16 md:py-24">
-        <div className="rounded-3xl bg-gray-900 px-6 py-12 text-center dark:bg-gray-100 md:px-10">
+        <div className="rounded-[24px] bg-gray-900 px-6 py-12 text-center dark:bg-gray-100 md:px-10">
           <h2 className="text-3xl font-bold tracking-tight text-white dark:text-gray-900 md:text-4xl">
             Start with the countries that actually fit you
           </h2>
@@ -648,7 +653,8 @@ export default function HomePage({ posts = [], homepage }) {
           <div className="mt-8">
             <Link
               href={homepage?.ctaLink || "/countries"}
-              className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-700">
+              className="er-btn er-btn-primary"
+            >
               {homepage?.ctaText || "Find Your Best-Fit Country"}
             </Link>
           </div>

@@ -1,3 +1,4 @@
+import "@/app/styles/er-design-system.css";
 import type { Metadata } from "next";
 import "@/styles/tailwind.css";
 import { Providers } from "./providers";

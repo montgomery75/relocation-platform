@@ -3,6 +3,7 @@ import CountryHero from "@/components/CountryHero";
 import CountryPathways from "@/components/CountryPathways";
 import CountryVisaOverview from "@/components/CountryVisaOverview";
 import CountryQuestions from "@/components/CountryQuestions";
+import CountryCtaSection from "@/components/CountryCtaSection";
 
 type CountryPageTemplateProps = {
   data: CountryPageData;
@@ -12,10 +13,13 @@ export default function CountryPageTemplate({
   data,
 }: CountryPageTemplateProps) {
   return (
-    <main className="min-h-screen bg-[#f8fbff] px-5 py-10">
-      <div className="mx-auto max-w-[1100px]">
-        <div className="mb-4 text-sm text-[#5f6c85]">
-          Home / {data?.countryName || "Country"}
+    <main className="er-page">
+      <div className="er-section">
+        <div className="er-muted er-text-sm er-mb-20">
+          <a href="/" className="er-inline-link">
+            Home
+          </a>{" "}
+          / {data?.countryName || "Country"}
         </div>
 
         {data?.hero && (
@@ -46,6 +50,12 @@ export default function CountryPageTemplate({
             items={data.visaOverview.items}
           />
         )}
+
+        <CountryCtaSection
+          variant="expanded"
+          country={data?.countryName}
+          visaAdjective={data?.countryName === "Germany" ? "German" : undefined}
+        />
 
         {data?.questions && (
           <CountryQuestions
