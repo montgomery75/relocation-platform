@@ -19,12 +19,12 @@ export default function HomePage({ posts = [], homepage }) {
 
                 <h1 className="text-3xl font-semibold leading-tight tracking-[-0.03em] text-slate-900 md:text-5xl">
                   {homepage?.headline ||
-                    "Move to Germany from the US in confidence"}
+                    "Move to Europe with Confidence"}
                 </h1>
 
                 <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-slate-700 md:text-lg">
                   {homepage?.subheadline ||
-                    "Discover which European countries and residency paths actually fit your situation — then build a clear relocation plan step by step."}
+                    "Verified and AI-driven relocation guidance for Americans moving to Europe. Compare visas, countries, and relocation strategies."}
                 </p>
 
                 <div className="mt-6 flex flex-wrap justify-center gap-3">
@@ -32,7 +32,7 @@ export default function HomePage({ posts = [], homepage }) {
                     href={homepage?.ctaLink || "/countries"}
                     className="er-btn er-btn-primary"
                   >
-                    {homepage?.ctaText || "Find Your Best-Fit Country"}
+                    {homepage?.ctaText || "Find Your Best Country"}
                   </Link>
 
                   <Link
@@ -125,7 +125,7 @@ export default function HomePage({ posts = [], homepage }) {
                 href={homepage?.ctaLink || "/countries"}
                 className="er-btn er-btn-primary"
               >
-                {homepage?.ctaText || "Find Your Best-Fit Country"}
+                {homepage?.ctaText || "Find Your Best Country"}
               </Link>
             </div>
           </div>
@@ -279,7 +279,7 @@ export default function HomePage({ posts = [], homepage }) {
                 href={homepage?.ctaLink || "/countries"}
                 className="er-btn er-btn-primary"
               >
-                {homepage?.ctaText || "Find Your Best-Fit Country"}
+                {homepage?.ctaText || "Find Your Best Country"}
               </Link>
             </div>
           </div>
@@ -669,7 +669,7 @@ export default function HomePage({ posts = [], homepage }) {
                   href={homepage?.ctaLink || "/countries"}
                   className="er-btn er-btn-secondary"
                 >
-                  {homepage?.ctaText || "Find Your Best-Fit Country"}
+                  {homepage?.ctaText || "Find Your Best Country"}
                 </Link>
               </div>
             </div>

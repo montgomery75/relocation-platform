@@ -1,63 +1,98 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { fetcher } from "@/lib/sanity/client";
+
+export const metadata: Metadata = {
+  title: "Germany Visas for Americans | EuropeRelocator",
+  description:
+    "Understand the main Germany visa and residence pathways for Americans, including the EU Blue Card, Opportunity Card, freelance visa, student visa, and family reunification.",
+};
 
 async function getSettingsData() {
   const data = await fetcher([
     `*[_type == "settings"][0]`,
     {},
   ]);
-
   return data;
+}
+
+function SectionHeading({
+  label,
+  title,
+  intro,
+}: {
+  label?: string;
+  title: string;
+  intro?: string;
+}) {
+  return (
+    <div className="mb-6 max-w-4xl">
+      {label ? (
+        <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
+          {label}
+        </div>
+      ) : null}
+      <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+        {title}
+      </h2>
+      {intro ? (
+        <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
+          {intro}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+function Card({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)] ${className}`}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default async function GermanyVisaPage() {
   const settings = await getSettingsData();
 
-  const quickFacts = [
-    {
-      title: "Americans can often apply from inside Germany",
-      text: "U.S. citizens can usually enter Germany without a visa and then apply locally for an eligible residence permit, depending on the pathway.",
-    },
-    {
-      title: "Germany has multiple realistic visa routes",
-      text: "The best path depends on whether you have a job offer, want to look for work, plan to freelance, study, or join family.",
-    },
-    {
-      title: "Preparation is often the hardest part",
-      text: "Many delays come from missing documents, weak application logic, or choosing the wrong route too early.",
-    },
-  ];
-
-  const overviewCards = [
+  const visaCards = [
     {
       title: "EU Blue Card",
       text: "For qualified professionals with a recognized degree or comparable qualification and a qualifying job offer.",
-      id: "eu-blue-card",
+      href: "/germany/visa/eu-blue-card",
     },
     {
       title: "Opportunity Card",
       text: "For people who want to move to Germany first and look for qualified work through a points-based pathway.",
-      id: "opportunity-card",
+      href: "/germany/opportunity-card",
     },
     {
       title: "Freelance Visa",
       text: "For self-employed professionals and freelancers with a viable business model or relevant client base.",
-      id: "freelance-visa",
+      href: "/germany/freelance-visa",
     },
     {
       title: "Student Visa",
       text: "For applicants admitted to a German university or certain preparatory academic pathways.",
-      id: "student-visa",
+      href: "/germany/student-visa",
     },
     {
       title: "Family Reunification",
       text: "For spouses, children, and certain family members joining someone already legally living in Germany.",
-      id: "family-reunification",
+      href: "/germany/family-reunification",
     },
   ];
 
-  const personas = [
+  const quickDecisions = [
     "I have a job offer from Germany",
     "I want to move first and look for work",
     "I want to freelance or be self-employed",
@@ -65,30 +100,7 @@ export default async function GermanyVisaPage() {
     "My spouse or family member already lives there",
   ];
 
-  const glossary = [
-    {
-      term: "Aufenthaltstitel",
-      definition: "Residence title or residence permit.",
-    },
-    {
-      term: "Ausländerbehörde",
-      definition: "Local immigration office responsible for residence permits.",
-    },
-    {
-      term: "Anmeldung",
-      definition: "Address registration after moving into a residence in Germany.",
-    },
-    {
-      term: "Krankenversicherung",
-      definition: "Health insurance.",
-    },
-    {
-      term: "Chancenkarte",
-      definition: "The German name for the Opportunity Card.",
-    },
-  ];
-
-  const faq = [
+  const faqItems = [
     {
       q: "Can Americans move to Germany without a visa first?",
       a: "In many cases, yes. U.S. citizens can generally enter Germany without a visa for a short stay and then apply locally for an eligible residence permit. The correct route still depends on your purpose of stay and whether you meet the permit requirements.",
@@ -107,30 +119,40 @@ export default async function GermanyVisaPage() {
     },
   ];
 
+  const glossary = [
+    ["Aufenthaltstitel", "Residence title or residence permit."],
+    ["Ausländerbehörde", "Local immigration office responsible for residence permits."],
+    ["Anmeldung", "Address registration after moving into a residence in Germany."],
+    ["Krankenversicherung", "Health insurance."],
+    ["Chancenkarte", "The German name for the Opportunity Card."],
+  ];
+
+  const sources = [
+    "BAMF — Federal Office for Migration and Refugees",
+    "Make it in Germany – by the Federal Republic of Germany",
+  ];
+
   return (
     <>
       <Navbar {...settings} />
 
-      <main className="bg-[#f7f9fc] text-slate-900">
-        <section className="pb-3 pt-8">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="text-sm text-[#5f6c85]">
-              <a href="/" className="hover:text-[#0f4ec9]">
-                Home
-              </a>{" "}
-              /{" "}
-              <a href="/germany" className="hover:text-[#0f4ec9]">
-                Germany
-              </a>{" "}
-              / Visa
-            </div>
+      <main className="bg-[#f8fbff] min-h-screen px-5 py-10 text-slate-900">
+        <div className="mx-auto max-w-[1100px]">
+          <div className="mb-4 text-sm text-[#5f6c85]">
+            <a href="/" className="hover:underline">
+              Home
+            </a>{" "}
+            /{" "}
+            <a href="/germany" className="hover:underline">
+              Germany
+            </a>{" "}
+            / Visa
           </div>
-        </section>
 
-        <section className="pb-6 pt-3">
-          <div className="mx-auto max-w-6xl px-5">
+          {/* HERO */}
+          <section className="pb-6 pt-2">
             <div className="rounded-[24px] border border-[#d9e3f5] bg-white px-6 py-8 shadow-[0_18px_48px_rgba(22,50,79,0.08)] md:px-10 md:py-10">
-              <div className="grid gap-8 lg:grid-cols-[1.65fr_0.95fr]">
+              <div className="grid gap-8 lg:grid-cols-[1.55fr_0.95fr]">
                 <div>
                   <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
                     Germany Visa Guide
@@ -141,21 +163,27 @@ export default async function GermanyVisaPage() {
                   </h1>
 
                   <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700 md:text-lg">
-                    Understand the main Germany visa and residence pathways based
-                    on your situation — whether you have a job offer, want to look
-                    for work, plan to freelance, study, or join family.
+                    Understand the main Germany visa and residence pathways based on
+                    your situation — whether you have a job offer, want to look for
+                    work, plan to freelance, study, or join family.
                   </p>
 
                   <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
-                    This page is designed as a structured decision page, not just
-                    a general blog article.
+                    This page is designed as a structured decision page, not just a
+                    general blog article.
                   </p>
 
                   <div className="mt-6 flex flex-wrap gap-3">
-                    <a href="#visa-overview" className="er-btn er-btn-primary">
+                    <a
+                      href="#visa-overview"
+                      className="inline-flex items-center justify-center rounded-xl bg-[#1f6fff] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0f4ec9]"
+                    >
                       Explore visa options
                     </a>
-                    <a href="#decision-guide" className="er-btn er-btn-secondary">
+                    <a
+                      href="#decision-guide"
+                      className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-gray-100"
+                    >
                       Find your likely path
                     </a>
                   </div>
@@ -166,22 +194,17 @@ export default async function GermanyVisaPage() {
                     Verified immigration information
                   </div>
 
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    This page is structured around official immigration sources
-                    and practical application logic.
-                  </p>
-
-                  <div className="mt-5 space-y-3 text-sm leading-6 text-slate-700">
+                  <div className="mt-4 space-y-4 text-sm leading-6 text-slate-700">
                     <div>
-                      <span className="font-semibold text-slate-900">
-                        Core sources:
-                      </span>{" "}
+                      This page is structured around official immigration sources
+                      and practical application logic.
+                    </div>
+                    <div>
+                      <span className="font-semibold text-slate-900">Core sources:</span>{" "}
                       BAMF — Federal Office for Migration and Refugees
                     </div>
                     <div>
-                      <span className="font-semibold text-slate-900">
-                        Additional source:
-                      </span>{" "}
+                      <span className="font-semibold text-slate-900">Additional source:</span>{" "}
                       Make it in Germany – by the Federal Republic of Germany
                     </div>
                     <div>
@@ -193,36 +216,53 @@ export default async function GermanyVisaPage() {
                 </aside>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="pb-4">
-          <div className="mx-auto grid max-w-6xl gap-4 px-5 md:grid-cols-3">
-            {quickFacts.map((fact) => (
-              <div
-                key={fact.title}
-                className="rounded-[16px] border border-[#d9e3f5] bg-white p-5 shadow-[0_10px_30px_rgba(22,50,79,0.06)]"
-              >
+          {/* QUICK FACTS */}
+          <section className="pb-4">
+            <div className="grid gap-4 md:grid-cols-3">
+              <Card>
                 <div className="text-base font-semibold text-slate-900">
-                  {fact.title}
+                  Americans can often apply from inside Germany
                 </div>
                 <p className="mt-2 text-sm leading-6 text-slate-700">
-                  {fact.text}
+                  U.S. citizens can usually enter Germany without a visa and then
+                  apply locally for an eligible residence permit, depending on the
+                  pathway.
                 </p>
-              </div>
-            ))}
-          </div>
-        </section>
+              </Card>
 
-        <section className="py-4">
-          <div className="mx-auto max-w-6xl px-5">
+              <Card>
+                <div className="text-base font-semibold text-slate-900">
+                  Germany has multiple realistic visa routes
+                </div>
+                <p className="mt-2 text-sm leading-6 text-slate-700">
+                  The best path depends on whether you have a job offer, want to
+                  look for work, plan to freelance, study, or join family.
+                </p>
+              </Card>
+
+              <Card>
+                <div className="text-base font-semibold text-slate-900">
+                  Preparation is often the hardest part
+                </div>
+                <p className="mt-2 text-sm leading-6 text-slate-700">
+                  Many delays come from missing documents, weak application
+                  logic, or choosing the wrong route too early.
+                </p>
+              </Card>
+            </div>
+          </section>
+
+          {/* QUICK NAV */}
+          <section className="pb-6">
             <div className="flex flex-wrap gap-3">
               {[
                 ["#visa-overview", "Visa Overview"],
                 ["#decision-guide", "Decision Guide"],
                 ["#requirements", "Requirements"],
                 ["#glossary", "Glossary"],
-                ["#long-term-path", "Long-term Path"],
+                ["#long-term", "Long-term Path"],
                 ["#faq", "FAQ"],
                 ["#sources", "Sources"],
               ].map(([href, label]) => (
@@ -235,27 +275,20 @@ export default async function GermanyVisaPage() {
                 </a>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="visa-overview" className="py-8">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="mb-6">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                German Visas — Overview
-              </h2>
-              <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
-                These are the main residence pathways most relevant for Americans
-                moving to Germany. The right route depends on your purpose,
-                qualifications, finances, and timing.
-              </p>
-            </div>
+          {/* VISA OVERVIEW */}
+          <section id="visa-overview" className="py-10">
+            <SectionHeading
+              title="German Visas — Overview"
+              intro="These are the main residence pathways most relevant for Americans moving to Germany. The right route depends on your purpose, qualifications, finances, and timing."
+            />
 
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {overviewCards.map((card) => (
+              {visaCards.map((card) => (
                 <a
                   key={card.title}
-                  href={`#${card.id}`}
+                  href={card.href}
                   className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_48px_rgba(22,50,79,0.08)]"
                 >
                   <h3 className="text-lg font-semibold text-slate-900">
@@ -270,283 +303,215 @@ export default async function GermanyVisaPage() {
                 </a>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-2">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="rounded-[16px] border border-[#f2dfaa] bg-[#fff8e8] p-6">
-              <h2 className="text-lg font-semibold text-slate-900">
-                Other (Less Common) Germany Visa Options
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-slate-700">
-                Germany also has narrower or more specialized residence pathways.
-                These can matter in edge cases, but they are not the main focus of
-                this page because they apply to a much smaller share of Americans.
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-700">
+          {/* NICHE VISAS */}
+          <section className="py-10">
+            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
+              <SectionHeading
+                title="Other (Less Common) Germany Visa Options"
+                intro="Germany also has narrower or more specialized residence pathways. These can matter in edge cases, but they are not the main focus of this page because they apply to a much smaller share of Americans."
+              />
+              <p className="max-w-3xl text-base leading-7 text-slate-700">
                 Later, this can link to a dedicated guide covering niche Germany
                 visa pathways in more detail.
               </p>
-            </div>
-          </div>
-        </section>
+            </Card>
+          </section>
 
-        <section id="decision-guide" className="py-10">
-          <div className="mx-auto grid max-w-6xl gap-6 px-5 lg:grid-cols-[0.95fr_1.15fr]">
-            <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Quick decision guide
-              </h2>
-              <p className="mt-3 max-w-xl text-base leading-7 text-slate-700">
-                Start with the question that best matches your situation.
-              </p>
-            </div>
+          {/* QUICK DECISION GUIDE */}
+          <section id="decision-guide" className="py-10">
+            <SectionHeading
+              title="Quick decision guide"
+              intro="Start with the question that best matches your situation."
+            />
 
-            <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]">
-              <div className="space-y-3">
-                {personas.map((persona) => (
-                  <div
-                    key={persona}
-                    className="rounded-[16px] bg-[#f7f9fc] px-4 py-3 text-sm text-slate-700"
-                  >
-                    {persona}
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+              {quickDecisions.map((item) => (
+                <Card key={item} className="text-center">
+                  <div className="text-sm font-semibold leading-6 text-slate-900">
+                    {item}
                   </div>
-                ))}
-              </div>
+                </Card>
+              ))}
+            </div>
+          </section>
 
-              <div className="mt-6 rounded-[16px] bg-[#1f6fff] p-6 text-white shadow-[0_20px_52px_rgba(31,111,255,0.18)]">
-                <h3 className="text-xl font-semibold leading-tight">
-                  Know exactly what to do—before you take any official step.
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-blue-50">
-                  A proper visa decision flow should help users understand likely
-                  eligibility, likely complexity, and the next logical step.
-                </p>
-                <div className="mt-5">
-                  <a href="#" className="er-btn er-btn-secondary">
-                    See your personalized visa plan
-                  </a>
+          {/* CTA */}
+          <section className="py-6">
+            <div className="rounded-[24px] bg-[#1f6fff] px-6 py-8 text-white shadow-[0_20px_52px_rgba(31,111,255,0.22)] md:px-8">
+              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                Know exactly what to do—before you take any official step.
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 md:text-base">
+                A proper visa decision flow should help users understand likely
+                eligibility, likely complexity, and the next logical step.
+              </p>
+              <div className="mt-5">
+                <a
+                  href="#requirements"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#1f6fff] transition hover:bg-slate-100"
+                >
+                  See your personalized visa plan
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* PATHWAY SUMMARIES */}
+          <section className="py-10">
+            <div className="space-y-8">
+              {[
+                [
+                  "EU Blue Card",
+                  "One of the most structured employment-based pathways for qualified professionals. Best suited for applicants with a qualifying job offer and the right academic or professional background.",
+                ],
+                [
+                  "Opportunity Card",
+                  "A route for people who want to come to Germany to search for work. Opportunity Card (Chancenkarte) is especially relevant for people without a job offer yet but with a profile that may qualify under Germany’s points-based system.",
+                ],
+                [
+                  "Freelance Visa",
+                  "Relevant for self-employed professionals who can show economic viability, clients, and a credible business case for operating in Germany.",
+                ],
+                [
+                  "Student Visa",
+                  "Built for applicants entering Germany through higher education, often with very different financial and documentation logic than employment-based pathways.",
+                ],
+                [
+                  "Family Reunification",
+                  "Usually relevant where a spouse, parent, or child already has a legal residence basis in Germany. The requirements depend heavily on the sponsor’s status and the family relationship.",
+                ],
+              ].map(([title, text]) => (
+                <div key={title}>
+                  <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
+                    {title}
+                  </h2>
+                  <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
+                    {text}
+                  </p>
                 </div>
-              </div>
+              ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section className="py-10">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="grid gap-6 lg:grid-cols-2">
-              <article
-                id="eu-blue-card"
-                className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]"
-              >
-                <h2 className="text-xl font-semibold text-slate-900">
-                  EU Blue Card
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  One of the most structured employment-based pathways for
-                  qualified professionals. Best suited for applicants with a
-                  qualifying job offer and the right academic or professional
-                  background.
-                </p>
-              </article>
-
-              <article
-                id="opportunity-card"
-                className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]"
-              >
-                <h2 className="text-xl font-semibold text-slate-900">
-                  Opportunity Card
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  A route for people who want to come to Germany to search for
-                  work. Opportunity Card (Chancenkarte) is especially relevant for
-                  people without a job offer yet but with a profile that may
-                  qualify under Germany’s points-based system.
-                </p>
-              </article>
-
-              <article
-                id="freelance-visa"
-                className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]"
-              >
-                <h2 className="text-xl font-semibold text-slate-900">
-                  Freelance Visa
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  Relevant for self-employed professionals who can show economic
-                  viability, clients, and a credible business case for operating
-                  in Germany.
-                </p>
-              </article>
-
-              <article
-                id="student-visa"
-                className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]"
-              >
-                <h2 className="text-xl font-semibold text-slate-900">
-                  Student Visa
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  Built for applicants entering Germany through higher education,
-                  often with very different financial and documentation logic than
-                  employment-based pathways.
-                </p>
-              </article>
-
-              <article
-                id="family-reunification"
-                className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)] lg:col-span-2"
-              >
-                <h2 className="text-xl font-semibold text-slate-900">
-                  Family Reunification
-                </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  Usually relevant where a spouse, parent, or child already has a
-                  legal residence basis in Germany. The requirements depend
-                  heavily on the sponsor’s status and the family relationship.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="requirements" className="py-10">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="grid gap-6 lg:grid-cols-2">
-              <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]">
-                <h2 className="text-xl font-semibold text-slate-900">
+          {/* REQUIREMENTS */}
+          <section id="requirements" className="py-10">
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
                   Job requirements
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  Some pathways require a qualifying job offer, some do not. Where
-                  employment is required, the job itself, your qualifications, and
-                  the relationship between the two can all matter.
+                <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
+                  Some pathways require a qualifying job offer, some do not.
+                  Where employment is required, the job itself, your
+                  qualifications, and the relationship between the two can all
+                  matter.
                 </p>
               </div>
 
-              <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]">
-                <h2 className="text-xl font-semibold text-slate-900">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
                   Financial requirements
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
+                <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
                   Germany often wants to see that you can support yourself. The
                   evidence varies by pathway and may include salary, savings,
                   client income, blocked funds, or sponsor support.
                 </p>
               </div>
 
-              <div className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)] lg:col-span-2">
-                <h2 className="text-xl font-semibold text-slate-900">
+              <div>
+                <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
                   Health insurance requirements
                 </h2>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
+                <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
                   Health insurance is not a minor detail. It is often a core
                   application requirement. The exact standard can depend on
-                  whether you are entering as an employee, student, freelancer, or
-                  job seeker, and whether public or private coverage is
+                  whether you are entering as an employee, student, freelancer,
+                  or job seeker, and whether public or private coverage is
                   appropriate for your situation.
                 </p>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="glossary" className="py-10">
-          <div className="mx-auto max-w-6xl px-5">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Germany visa glossary
-            </h2>
-
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {glossary.map((item) => (
-                <div
-                  key={item.term}
-                  className="rounded-[16px] border border-[#d9e3f5] bg-white p-5 shadow-[0_10px_30px_rgba(22,50,79,0.06)]"
-                >
-                  <div className="font-semibold text-slate-900">{item.term}</div>
+          {/* GLOSSARY */}
+          <section id="glossary" className="py-10">
+            <SectionHeading title="Germany visa glossary" />
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {glossary.map(([term, definition]) => (
+                <Card key={term}>
+                  <div className="text-sm font-semibold text-slate-900">{term}</div>
                   <p className="mt-2 text-sm leading-6 text-slate-700">
-                    {item.definition}
+                    {definition}
                   </p>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="long-term-path" className="py-10">
-          <div className="mx-auto max-w-6xl px-5">
-            <div className="rounded-[24px] border border-[#d9e3f5] bg-white px-6 py-8 shadow-[0_18px_48px_rgba(22,50,79,0.08)] md:px-8">
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Long-term path to permanent residence and citizenship
-              </h2>
-              <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
-                Choosing the right visa is not just about entry. Different
-                pathways can affect how straightforward your long-term settlement
-                path is, including permanent residence and, later, citizenship.
-              </p>
-            </div>
-          </div>
-        </section>
+          {/* LONG-TERM PATH */}
+          <section id="long-term" className="py-10">
+            <SectionHeading
+              title="Long-term path to permanent residence and citizenship"
+              intro="Choosing the right visa is not just about entry. Different pathways can affect how straightforward your long-term settlement path is, including permanent residence and, later, citizenship."
+            />
+          </section>
 
-        <section className="py-6">
-          <div className="mx-auto max-w-6xl px-5">
+          {/* FINAL CTA */}
+          <section className="py-6">
             <div className="rounded-[24px] bg-[#1f6fff] px-6 py-8 text-white shadow-[0_20px_52px_rgba(31,111,255,0.22)] md:px-8">
               <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
                 Not sure which Germany visa fits your case?
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 md:text-base">
-                The value is not just listing visa categories. It is helping users
-                avoid delays, avoid rejection, and understand exactly what to do
-                next.
+                The value is not just listing visa categories. It is helping
+                users avoid delays, avoid rejection, and understand exactly what
+                to do next.
               </p>
               <div className="mt-5">
-                <a href="#" className="er-btn er-btn-secondary">
+                <a
+                  href="#faq"
+                  className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#1f6fff] transition hover:bg-slate-100"
+                >
                   Preview your visa plan
                 </a>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="faq" className="py-10">
-          <div className="mx-auto max-w-6xl px-5">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              FAQ
-            </h2>
-
-            <div className="mt-6 space-y-4">
-              {faq.map((item) => (
-                <div
-                  key={item.q}
-                  className="rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]"
-                >
+          {/* FAQ */}
+          <section id="faq" className="py-10">
+            <SectionHeading title="FAQ" />
+            <div className="grid gap-5 md:grid-cols-2">
+              {faqItems.map((item) => (
+                <Card key={item.q}>
                   <h3 className="text-lg font-semibold text-slate-900">
                     {item.q}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
+                  <p className="mt-3 tex
+::contentReference[oaicite:2]{index=2}
+t-sm leading-6 text-slate-700">
                     {item.a}
                   </p>
-                </div>
+                </Card>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section id="sources" className="pb-14 pt-10">
-          <div className="mx-auto max-w-6xl px-5">
-            <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-              Sources
-            </h2>
-
-            <div className="mt-6 rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)]">
+          {/* SOURCES */}
+          <section id="sources" className="pb-14 pt-10">
+            <SectionHeading title="Sources" />
+            <Card>
               <ul className="space-y-3 text-sm leading-6 text-slate-700">
-                <li>BAMF — Federal Office for Migration and Refugees</li>
-                <li>Make it in Germany – by the Federal Republic of Germany</li>
+                {sources.map((source) => (
+                  <li key={source}>{source}</li>
+                ))}
               </ul>
-            </div>
-          </div>
-        </section>
+            </Card>
+          </section>
+        </div>
       </main>
 
       <Footer {...settings} />
