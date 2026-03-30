@@ -762,3 +762,20 @@ a {
     flex-direction: column;
   }
 }
+.er-chip-country {
+  background: var(--amber-soft);
+  border-color: var(--amber-line);
+  color: var(--text);
+}
+
+.er-chip-visa {
+  background: #f2ebff;
+  border-color: #dbc9ff;
+  color: #6d42c7;
+}
+
+.er-chip-success {
+  background: var(--green-soft);
+  border-color: #bfe7d2;
+  color: var(--green);
+}

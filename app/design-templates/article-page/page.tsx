@@ -1,12 +1,10 @@
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import Link from "next/link";
 import { fetcher } from "@/lib/sanity/client";
 
 async function getSettingsData() {
-  const data = await fetcher([
-    `*[_type == "settings"][0]`,
-    {},
-  ]);
+  const data = await fetcher([`*[_type == "settings"][0]`, {}]);
   return data;
 }
 
@@ -21,155 +19,98 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-6 max-w-4xl">
-      {label ? (
-        <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
-          {label}
-        </div>
-      ) : null}
-      <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-        {title}
-      </h2>
-      {intro ? (
-        <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
-          {intro}
-        </p>
-      ) : null}
+      {label ? <div className="er-small-label">{label}</div> : null}
+      <h2>{title}</h2>
+      {intro ? <p className="er-section-intro">{intro}</p> : null}
     </div>
   );
 }
 
-function Card({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)] ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
-function CornerBadgeCard({
-  badge,
-  badgeClassName,
-  children,
-  className = "",
-}: {
-  badge: string;
-  badgeClassName?: string;
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`relative overflow-hidden rounded-[20px] border border-[#d9e3f5] bg-white p-6 shadow-[0_10px_30px_rgba(22,50,79,0.06)] ${className}`}
-    >
-      <div
-        className={`absolute right-0 top-0 rounded-bl-[16px] rounded-tr-[20px] px-4 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white ${badgeClassName || "bg-[#1f6fff]"}`}
-      >
-        {badge}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-export default async function ArticlePage() {
+export default async function ArticleTemplatePage() {
   const settings = await getSettingsData();
 
   return (
     <>
       <Navbar {...settings} />
 
-      <main className="bg-[#f8fbff] min-h-screen px-5 py-10 text-slate-900">
-        <div className="mx-auto max-w-[1100px]">
+      <main className="bg-[#f8fbff] min-h-screen text-slate-900">
+        <div className="er-page">
           <div className="mb-4 text-sm text-[#5f6c85]">
-            <a href="/" className="hover:underline">
+            <Link href="/" className="hover:underline">
               Home
-            </a>{" "}
+            </Link>{" "}
             /{" "}
-            <a href="/design-templates" className="hover:underline">
+            <Link href="/design-templates" className="hover:underline">
               Design Templates
-            </a>{" "}
-            / Article Page
+            </Link>{" "}
+            / Article Template
           </div>
 
-          <section className="pb-6 pt-2">
-            <div className="rounded-[24px] border border-[#d9e3f5] bg-white px-6 py-8 shadow-[0_18px_48px_rgba(22,50,79,0.08)] md:px-10 md:py-10">
-              <div className="mb-4 inline-flex rounded-full border border-[#cfe0ff] bg-[#eef4ff] px-4 py-2 text-sm font-semibold text-[#0f4ec9]">
-                Flex Article Reference
+          <section className="pb-6 pt-2" id="top">
+            <div className="er-hero">
+              <div className="er-verification-bar">
+                Flexible article template • EuropeRelocator editorial system
               </div>
 
-              <div className="grid gap-8 lg:grid-cols-[1.55fr_0.95fr]">
+              <div className="er-hero-grid">
                 <div>
-                  <div className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
-                    Flexible article template
-                  </div>
+                  <div className="er-eyebrow">Shared content template</div>
 
-                  <h1 className="max-w-3xl text-3xl font-semibold leading-tight tracking-[-0.03em] text-slate-900 md:text-5xl">
-                    A flexible article template for About, Author, and Guide
-                    pages
-                  </h1>
+                  <h1>A flexible article template for structured editorial pages</h1>
 
-                  <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700 md:text-lg">
-                    This reference page shows how one shared EuropeRelocator
-                    article system can support simple brand pages, expert author
-                    pages, and more editorial guides — while keeping the same
-                    overall design language.
+                  <p className="er-lead">
+                    This page shows what a real EuropeRelocator article template
+                    can look like when it follows the same visual system as the
+                    Germany EU Blue Card page: editorial first, conversion-aware,
+                    and modular enough for About, Author, and guide-style pages.
                   </p>
 
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <a
-                      className="inline-flex items-center justify-center rounded-xl bg-[#1f6fff] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0f4ec9]"
-                      href="#"
-                    >
-                      Primary CTA
-                    </a>
-                    <a
-                      className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-gray-100"
-                      href="#"
-                    >
-                      Secondary CTA
-                    </a>
+                  <p className="er-text-sm er-muted er-max-760 er-mb-18">
+                    Use this for pages that need more freedom than a visa article,
+                    but should still feel like part of the same product and brand.
+                  </p>
+
+                  <div className="er-hero-actions">
+                    <Link href="/visa-success-plan" className="er-btn er-btn-primary">
+                      Get your personalized visa plan
+                    </Link>
+                  </div>
+
+                  <div className="er-quick-nav">
+                    {[
+                      ["#intro", "Intro"],
+                      ["#summary", "Summary"],
+                      ["#callout", "Callout"],
+                      ["#cta", "CTA"],
+                      ["#faq", "FAQ"],
+                    ].map(([href, label]) => (
+                      <a key={href} href={href} className="er-chip">
+                        {label}
+                      </a>
+                    ))}
                   </div>
                 </div>
 
-                <aside className="rounded-[16px] border border-[#d9e3f5] bg-[linear-gradient(180deg,#f8fbff_0%,#edf4ff_100%)] p-6 shadow-[0_12px_30px_rgba(22,50,79,0.06)]">
-                  <div className="text-sm font-semibold text-[#0f4ec9]">
-                    Best used for
+                <aside className="er-hero-side">
+                  <div className="er-score-label">Best used for</div>
+                  <div className="er-score-title">
+                    Pages that need flexibility without breaking the design system
                   </div>
 
-                  <div className="mt-5 space-y-3">
-                    <div className="rounded-[16px] border border-[#d9e3f5] bg-white p-4">
-                      <div className="text-sm font-semibold text-slate-900">
-                        Page types
-                      </div>
-                      <div className="mt-1 text-sm leading-6 text-slate-700">
-                        About Us, Author, Living Abroad Guide
-                      </div>
+                  <div className="er-score-list">
+                    <div className="er-score-item">
+                      <strong>Page types</strong>
+                      <span>About Us, Author, city guide, moving guide</span>
                     </div>
 
-                    <div className="rounded-[16px] border border-[#d9e3f5] bg-white p-4">
-                      <div className="text-sm font-semibold text-slate-900">
-                        Shared elements
-                      </div>
-                      <div className="mt-1 text-sm leading-6 text-slate-700">
-                        Header, hero, CTA language, footer, card styles
-                      </div>
+                    <div className="er-score-item">
+                      <strong>Structure</strong>
+                      <span>Editorial layout with modular trust and CTA blocks</span>
                     </div>
 
-                    <div className="rounded-[16px] border border-[#d9e3f5] bg-white p-4">
-                      <div className="text-sm font-semibold text-slate-900">
-                        CMS goal
-                      </div>
-                      <div className="mt-1 text-sm leading-6 text-slate-700">
-                        Modular widgets with controlled settings
-                      </div>
+                    <div className="er-score-item">
+                      <strong>Goal</strong>
+                      <span>Keep unique pages consistent with the visa content system</span>
                     </div>
                   </div>
                 </aside>
@@ -177,408 +118,399 @@ export default async function ArticlePage() {
             </div>
           </section>
 
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading label="Widget 1" title="Rich text block" />
-              <div className="max-w-3xl text-base leading-7 text-slate-700">
-                This is the core editorial block. It should handle standard
-                article text, intros, short brand explanations, and longer guide
-                content. In the CMS, this will likely map to a flexible rich
-                text editor with only a controlled set of formatting options.
-              </div>
+          <section className="er-section">
+            <div className="er-hero">
+              <div className="er-eyebrow">EuropeRelocator System</div>
 
-              <div className="mt-5 max-w-3xl">
-                <p className="text-base leading-7 text-slate-700">
-                  The goal is not unlimited design freedom. The goal is a clean
-                  page that feels consistent with the rest of EuropeRelocator.
-                </p>
+              <h2>More Clarity and Less Risk</h2>
 
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-700">
-                  <li>Use for basic content sections</li>
-                  <li>Support headings, paragraphs, lists, and links</li>
-                  <li>Keep spacing and typography standardized</li>
-                </ul>
-              </div>
-            </Card>
-          </section>
-
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading
-                label="Widget 2"
-                title="Quick facts / summary cards"
-                intro="A reusable summary block for editorial pages, overview sections, or short brand intros."
-              />
-
-              <div className="grid gap-5 md:grid-cols-3">
-                <Card className="shadow-none">
-                  <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
-                    Use case
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    About page
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    Explain who you help, what the company does, and how the
-                    platform is different.
-                  </p>
-                </Card>
-
-                <Card className="shadow-none">
-                  <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
-                    Use case
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    Author page
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    Summarize expertise, topic areas, and why the author is
-                    qualified to write the content.
-                  </p>
-                </Card>
-
-                <Card className="shadow-none">
-                  <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
-                    Use case
-                  </div>
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    Guide page
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    Highlight key takeaways, biggest mistakes, or the main
-                    decisions readers need to make.
-                  </p>
-                </Card>
-              </div>
-            </Card>
-          </section>
-
-          <section className="py-10">
-            <CornerBadgeCard
-              badge="Local knowledge"
-              badgeClassName="bg-slate-700"
-              className="border-[#d9e6f3] bg-[linear-gradient(180deg,#f7faff_0%,#eef4ff_100%)] shadow-[0_20px_52px_rgba(31,111,255,0.06)]"
-            >
-              <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
-                Widget 3
-              </div>
-              <h2 className="mt-8 text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Callout box
-              </h2>
-              <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
-                This box can be reused for expert tips, local advice, important
-                warnings, or explanations of what people often get wrong.
+              <p className="er-section-intro er-max-760">
+                Our system helps you move from uncertainty to a clearer relocation
+                plan — first by finding the right country, then the right visa,
+                and finally by showing you how to move forward with fewer mistakes.
               </p>
-            </CornerBadgeCard>
+
+              <div className="er-grid-3">
+                <div className="er-card er-widget-card">
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="er-step-badge">01</div>
+                    <div className="er-chip">Free</div>
+                  </div>
+
+                  <p className="er-text-sm er-muted er-mb-8">Find your best country</p>
+                  <h3 className="er-mb-18">COUNTRY MATCH</h3>
+
+                  <div className="er-soft-box er-mb-20">
+                    <p className="er-mb-0 font-semibold">
+                      See which European country is the best fit for you.
+                    </p>
+                  </div>
+
+                  <ul className="er-clean-list er-mb-20">
+                    <li>
+                      <strong>Compare options</strong>
+                      <br />
+                      Based on your goals, finances, and situation
+                    </li>
+                    <li>
+                      <strong>Get clarity faster</strong>
+                      <br />
+                      Focus on countries that make sense for you
+                    </li>
+                    <li>
+                      <strong>Avoid wrong paths</strong>
+                      <br />
+                      Save time before diving into visa details
+                    </li>
+                  </ul>
+
+                  <Link href="/countries" className="er-btn er-btn-primary">
+                    Find Country
+                  </Link>
+                </div>
+
+                <div className="er-card er-widget-card">
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="er-step-badge">02</div>
+                    <div className="er-chip">Free</div>
+                  </div>
+
+                  <p className="er-text-sm er-muted er-mb-8">Identify your visa path</p>
+                  <h3 className="er-mb-18">VISA MATCH</h3>
+
+                  <div className="er-soft-box er-mb-20">
+                    <p className="er-mb-0 font-semibold">
+                      Find the visa that actually works for your situation.
+                    </p>
+                  </div>
+
+                  <ul className="er-clean-list er-mb-20">
+                    <li>
+                      <strong>See eligible visas</strong>
+                      <br />
+                      Based on your profile and situation
+                    </li>
+                    <li>
+                      <strong>Understand requirements</strong>
+                      <br />
+                      Know what each visa requires upfront
+                    </li>
+                    <li>
+                      <strong>Avoid wrong paths</strong>
+                      <br />
+                      Save time by focusing on the right option
+                    </li>
+                  </ul>
+
+                  <Link href="/visa-match" className="er-btn er-btn-secondary">
+                    Find Visa
+                  </Link>
+                </div>
+
+                <div className="er-info-box">
+                  <div className="mb-5 flex items-center justify-between">
+                    <div className="er-step-badge">03</div>
+                    <div className="er-chip">$29 one time</div>
+                  </div>
+
+                  <p className="er-text-sm er-muted er-mb-8">Move forward with confidence</p>
+                  <h3 className="er-mb-18">VISA SUCCESS PLAN</h3>
+
+                  <div className="er-soft-box er-mb-20">
+                    <p className="er-mb-0 font-semibold">
+                      Know if you qualify and what to do next.
+                    </p>
+                  </div>
+
+                  <ul className="er-clean-list er-mb-20">
+                    <li>
+                      <strong>Check if you qualify</strong>
+                      <br />
+                      See whether your case meets the core requirements
+                    </li>
+                    <li>
+                      <strong>Understand approval chances</strong>
+                      <br />
+                      Spot risks before you take official steps
+                    </li>
+                    <li>
+                      <strong>Get your roadmap</strong>
+                      <br />
+                      Follow a clearer next-step plan with less confusion
+                    </li>
+                  </ul>
+
+                  <Link href="/visa-success-plan" className="er-btn er-btn-primary">
+                    Get your personalized visa plan
+                  </Link>
+                </div>
+              </div>
+            </div>
           </section>
 
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
+          <section id="intro" className="er-section">
+            <div className="er-section-box">
               <SectionHeading
-                label="Widget 4"
-                title="Steps / process block"
-                intro='Useful for process pages, planning guides, and "how it works" content.'
+                label="Core content"
+                title="Rich editorial content should still feel structured"
+                intro="This template is designed for pages that need more flexibility than a visa article, but should still use the same logic: clear explanation, trust signals, and the right CTA at the right time."
               />
 
-              <div className="grid gap-5 md:grid-cols-3">
+              <div className="er-grid-2">
+                <div>
+                  <p className="er-mb-18">
+                    On EuropeRelocator, some pages are highly structured
+                    decision pages, like visa articles. Others are broader
+                    editorial pages, such as author pages, relocation guides,
+                    and topic explainers.
+                  </p>
+
+                  <p className="er-mb-18">
+                    This template is for those pages. It gives you room for more
+                    narrative and brand voice, without drifting away from the
+                    design, trust language, and product logic users already know.
+                  </p>
+
+                  <p className="er-mb-0">
+                    The result should still feel unmistakably like part of the
+                    same system.
+                  </p>
+                </div>
+
+                <div className="er-note-box">
+                  <h3>When to use this template</h3>
+                  <ul className="er-clean-list er-mt-16">
+                    <li>About pages and founder pages</li>
+                    <li>Country or city guides that are not visa-specific</li>
+                    <li>Practical moving guides and resource pages</li>
+                    <li>Pages where editorial explanation matters more than scoring</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="summary" className="er-section">
+            <div className="er-section-box">
+              <SectionHeading
+                label="Summary cards"
+                title="A compact way to frame the page"
+                intro="This block is useful near the top of longer pages when you want readers to understand the purpose quickly."
+              />
+
+              <div className="er-grid-3">
+                <div className="er-card">
+                  <div className="er-small-label">Use case</div>
+                  <h3>About page</h3>
+                  <p className="er-muted er-text-sm">
+                    Explain who you help, how the service works, and why the
+                    business exists.
+                  </p>
+                </div>
+
+                <div className="er-card">
+                  <div className="er-small-label">Use case</div>
+                  <h3>Author page</h3>
+                  <p className="er-muted er-text-sm">
+                    Show expertise, lived experience, and topic credibility in
+                    a structured way.
+                  </p>
+                </div>
+
+                <div className="er-card">
+                  <div className="er-small-label">Use case</div>
+                  <h3>Guide page</h3>
+                  <p className="er-muted er-text-sm">
+                    Highlight the key questions, decisions, or common mistakes
+                    users should understand first.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="callout" className="er-section">
+            <div className="er-local-box">
+              <div className="er-small-label">Callout</div>
+              <h2>A strong article template still needs room for context</h2>
+              <p className="er-section-intro er-max-760">
+                Not every page is about pass-or-fail eligibility. Sometimes the
+                value is helping users understand the landscape, the tradeoffs,
+                and what they are likely to get wrong before they take the next step.
+              </p>
+            </div>
+          </section>
+
+          <section className="er-section">
+            <div className="er-section-box">
+              <SectionHeading
+                label="Steps"
+                title="A process section should feel practical"
+                intro='This is useful for “how it works,” planning pages, or any page where the user needs a clear sequence.'
+              />
+
+              <div className="er-grid-3">
                 {[
                   [
                     "01",
-                    "Understand the decision",
-                    "Clarify what the page helps the reader decide or do.",
+                    "Understand the situation",
+                    "Clarify what the page helps the user decide or prepare.",
                   ],
                   [
                     "02",
-                    "Break it into actions",
-                    "Present steps in a clear order with practical explanations.",
+                    "Turn it into actions",
+                    "Break the topic into concrete steps with real-world explanations.",
                   ],
                   [
                     "03",
-                    "Offer the next step",
-                    "End with a CTA, checklist, or related guide.",
+                    "Show the next move",
+                    "End with a CTA, plan, or related page that makes the next step obvious.",
                   ],
                 ].map(([step, title, text]) => (
-                  <Card key={step} className="shadow-none">
-                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#cfe0ff] bg-[#eef4ff] text-sm font-semibold text-[#0f4ec9]">
-                      {step}
-                    </div>
-                    <h3 className="text-xl font-semibold text-slate-900">
-                      {title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-700">
-                      {text}
-                    </p>
-                  </Card>
-                ))}
-              </div>
-            </Card>
-          </section>
-
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading label="Widget 5" title="Checklist block" />
-
-              <div className="space-y-4">
-                {[
-                  [
-                    "✓ Short, practical items",
-                    'Use this for preparation steps, common checks, or "before you move" tasks.',
-                  ],
-                  [
-                    "✓ Good for guide pages",
-                    "Especially useful when readers want clear next actions instead of long narrative text.",
-                  ],
-                  [
-                    "✓ Could be grouped later",
-                    "In a future version, items could optionally be organized by category.",
-                  ],
-                ].map(([title, text]) => (
-                  <Card key={title} className="shadow-none">
-                    <h3 className="text-xl font-semibold text-slate-900">
-                      {title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-700">
-                      {text}
-                    </p>
-                  </Card>
-                ))}
-              </div>
-            </Card>
-          </section>
-
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading label="Widget 6" title="Comparison block" />
-
-              <div className="grid gap-5 md:grid-cols-2">
-                <Card className="shadow-none">
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    Simple editorial version
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    Good for side-by-side explanations like DIY vs expert help,
-                    temporary vs long-term move, or two planning paths.
-                  </p>
-                </Card>
-
-                <Card className="shadow-none">
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    Structured guidance version
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    Can later support bullets, labels, and optional CTA links if
-                    needed.
-                  </p>
-                </Card>
-              </div>
-            </Card>
-          </section>
-
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading label="Widget 7" title="Author / expert box" />
-
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="flex min-h-[180px] items-center justify-center rounded-[20px] border border-dashed border-[#c9d9ec] bg-[linear-gradient(180deg,#fbfdff_0%,#f4f8fd_100%)] p-6 text-center text-sm leading-6 text-slate-600">
-                  Replace this placeholder with a real author photo later.
-                </div>
-
-                <Card className="shadow-none">
-                  <h3 className="text-xl font-semibold text-slate-900">
-                    Sebastian Mueller
-                  </h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-700">
-                    Founder of EuropeRelocator. German-American entrepreneur
-                    with personal and professional experience across the U.S.
-                    and Germany.
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    {[
-                      "Germany relocation",
-                      "U.S. to Europe planning",
-                      "Practical bureaucracy guidance",
-                    ].map((chip) => (
-                      <span
-                        key={chip}
-                        className="rounded-full border border-[#d9e3f5] bg-white px-4 py-2 text-sm font-medium text-slate-700"
-                      >
-                        {chip}
-                      </span>
-                    ))}
+                  <div key={step} className="er-card">
+                    <div className="er-step-badge">{step}</div>
+                    <h3>{title}</h3>
+                    <p className="er-muted er-text-sm">{text}</p>
                   </div>
-                </Card>
+                ))}
               </div>
-            </Card>
+            </div>
           </section>
 
-          <section className="py-10">
-            <CornerBadgeCard
-              badge="Critical advice"
-              className="border-[#bfd6ff] bg-[linear-gradient(180deg,#f7faff_0%,#eef4ff_100%)] shadow-[0_20px_52px_rgba(31,111,255,0.08)]"
-            >
-              <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#0f4ec9]">
-                Widget 8
-              </div>
-              <h2 className="mt-8 text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
-                Quote / testimonial block
-              </h2>
-              <p className="mt-3 max-w-3xl text-base leading-7 text-slate-700">
-                “The flex article should feel like one coherent system — not a
-                random collection of CMS blocks.”
-              </p>
-            </CornerBadgeCard>
-          </section>
-
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
+          <section id="cta" className="er-section">
+            <div className="er-section-box">
               <SectionHeading
-                label="Widget 9"
-                title="Verified information box"
-                intro="An optional trust widget for immigration, residency, tax, and process pages. All three content rows are editable in the CMS."
+                label="Flexible CTA"
+                title="Time to check if you qualify"
+                intro="This CTA block can sit naturally inside the article flow when the reader is ready to move from information to action."
               />
 
-              <Card className="shadow-none">
-                <div className="mb-4 inline-flex rounded-full border border-[#cfe0ff] bg-[#eef4ff] px-4 py-2 text-sm font-semibold text-[#0f4ec9]">
-                  Verified immigration information
+              <div className="er-cta">
+                <div>
+                  <h3>Understand your case before you take the next official step</h3>
+                  <p>
+                    See your eligibility, approval chances, likely risks, and
+                    the next steps that matter most for your situation.
+                  </p>
                 </div>
 
-                <div className="space-y-3 text-sm leading-6 text-slate-700">
-                  <div>
-                    <strong>Last fact-checked:</strong> March 16, 2026
-                  </div>
-                  <div>
-                    <strong>Sources monitored:</strong> German Federal Foreign
-                    Office • Make-it-in-Germany by the Federal Republic of
-                    Germany • German missions
-                  </div>
+                <div className="er-cta-actions">
+                  <Link href="/visa-success-plan" className="er-btn er-btn-primary">
+                    Get your personalized visa plan
+                  </Link>
                 </div>
-              </Card>
-            </Card>
-          </section>
-
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading label="Widget 10" title="Resource links block" />
-
-              <div className="space-y-4">
-                {[
-                  [
-                    "Country guide example",
-                    "Link to a broader Germany guide, healthcare overview, or housing article.",
-                  ],
-                  [
-                    "Internal tool link",
-                    "Connect educational content to the Country Match Tool or future eligibility workflows.",
-                  ],
-                  [
-                    "Authority resource",
-                    "Optionally include curated links to official sources or verification pages.",
-                  ],
-                ].map(([title, text]) => (
-                  <Card key={title} className="shadow-none">
-                    <h3 className="text-xl font-semibold text-slate-900">
-                      {title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-700">
-                      {text}
-                    </p>
-                  </Card>
-                ))}
               </div>
-            </Card>
+            </div>
           </section>
 
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading label="Widget 11" title="FAQ block" />
+          <section className="er-section">
+            <div className="er-grid-3">
+              <div className="er-card">
+                <div className="er-small-label">Free Tool</div>
+                <div className="er-chip er-chip-country er-mb-12">Your Country</div>
+                <h3>Not sure where to move?</h3>
+                <p className="er-muted er-text-sm er-mb-12">
+                  Answer a few simple questions about your goals, lifestyle, and
+                  financial situation.
+                </p>
+                <p className="er-muted er-text-sm er-mb-20">
+                  You’ll get a clear recommendation with your best country option
+                  and alternatives — based on real relocation criteria.
+                </p>
+                <Link href="/countries" className="er-btn er-btn-primary">
+                  Start country match
+                </Link>
+              </div>
 
-              <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              <div className="er-card">
+                <div className="er-small-label">Free Tool</div>
+                <div className="er-chip er-chip-visa er-mb-12">Your Visa</div>
+                <h3>Not sure which visa works?</h3>
+                <p className="er-muted er-text-sm er-mb-12">
+                  Tell us about your background, work, and plans in Europe.
+                </p>
+                <p className="er-muted er-text-sm er-mb-20">
+                  We show you visa options that fit your situation — including
+                  how well each one matches your profile.
+                </p>
+                <Link href="/visa-match" className="er-btn er-btn-primary">
+                  Start visa match
+                </Link>
+              </div>
+
+              <div className="er-info-box">
+                <div className="er-small-label">$29 — one time fee</div>
+                <div className="er-chip er-chip-success er-mb-12">Your Success Plan</div>
+                <h3>Ready to move forward?</h3>
+                <p className="er-muted er-text-sm er-mb-12">
+                  Based on your visa, we analyze your eligibility and highlight
+                  potential risks.
+                </p>
+                <p className="er-muted er-text-sm er-mb-20">
+                  Get a complete step-by-step plan, required documents, and a
+                  clear timeline — so you avoid delays and mistakes.
+                </p>
+                <Link href="/visa-success-plan" className="er-btn er-btn-primary">
+                  Get your personalized visa plan
+                </Link>
+              </div>
+            </div>
+          </section>
+
+          <section id="faq" className="er-section">
+            <div className="er-section-box">
+              <SectionHeading
+                label="FAQ"
+                title="Common questions about this template style"
+                intro="This is an example FAQ section for broader editorial pages."
+              />
+
+              <div className="er-grid-2">
                 {[
                   [
-                    "Can this template be used for very different page types?",
-                    "Yes. The structure stays consistent, while the widgets make the page flexible enough for simple brand pages and more editorial guides.",
+                    "When should I use this template instead of a visa article layout?",
+                    "Use it when the page is more explanatory, editorial, or brand-oriented and does not need the full visa decision architecture.",
                   ],
                   [
-                    "Should every page use every widget?",
-                    "No. This reference page shows the library. Real pages would only use the blocks that serve their purpose.",
+                    "Can this page still convert well without visa-specific scoring?",
+                    "Yes. It should still guide the user toward the right next step through strong CTA placement and a clear content structure.",
                   ],
                   [
-                    "Will this later map to CMS modules?",
-                    "Yes. After the reference page is finalized, each widget can become a CMS block with controlled settings.",
+                    "Does this page still need trust signals?",
+                    "Yes. Even on broader pages, users should recognize the same verification, structure, and tone they see on visa content.",
+                  ],
+                  [
+                    "Should every article use every module?",
+                    "No. This page shows a flexible composition, but real pages should only use the sections that serve the topic.",
                   ],
                 ].map(([q, a]) => (
-                  <Card key={q} className="shadow-none">
-                    <h3 className="text-lg font-semibold text-slate-900">
-                      {q}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-700">{a}</p>
-                  </Card>
+                  <div key={q} className="er-card">
+                    <h3>{q}</h3>
+                    <p className="er-muted er-text-sm">{a}</p>
+                  </div>
                 ))}
               </div>
-            </Card>
+            </div>
           </section>
 
-          <section className="py-10">
-            <Card className="shadow-[0_18px_48px_rgba(22,50,79,0.08)]">
-              <SectionHeading
-                label="Widget 12"
-                title="Highlight box"
-                intro="An optional high-visibility block. Headline, text, and one or two CTA buttons should all be editable in the CMS."
-              />
-
-              <Card className="shadow-none">
-                <h3 className="text-xl font-semibold text-slate-900">
-                  This box really stands out when you need it
-                </h3>
-                <p className="mt-3 text-sm leading-6 text-slate-700">
-                  Use this as a featured content highlight, mid-page CTA, or
-                  premium emphasis block on guide, author, or about pages.
+          <section className="er-section">
+            <div className="er-highlight-cta">
+              <div>
+                <div className="er-small-label">Next step</div>
+                <h2>Let us help you through the process</h2>
+                <p className="er-mb-0">
+                  This final CTA block can be reused on article pages when you
+                  want to move readers from explanation into action.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    className="inline-flex items-center justify-center rounded-xl bg-[#1f6fff] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#0f4ec9]"
-                    href="#"
-                  >
-                    You need to check this out
-                  </a>
-                  <a
-                    className="inline-flex items-center justify-center rounded-xl border border-gray-300 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-gray-100"
-                    href="#"
-                  >
-                    Secondary CTA
-                  </a>
-                </div>
-              </Card>
-            </Card>
-          </section>
-
-          <section className="pb-14 pt-6">
-            <div className="rounded-[24px] bg-[#1f6fff] px-6 py-8 text-white shadow-[0_20px_52px_rgba(31,111,255,0.22)] md:px-8">
-              <div className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-100">
-                Next step
               </div>
-              <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
-                Know exactly what to do — before you take any official step.
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-50 md:text-base">
-                This final CTA block can be reused across flex article pages,
-                with customized wording depending on whether the page is
-                informational, brand-driven, or conversion-focused.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <a
-                  className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#1f6fff] transition hover:bg-slate-100"
-                  href="#"
-                >
-                  See your personalized visa plan
-                </a>
-                <a
-                  className="inline-flex items-center justify-center rounded-xl border border-blue-200 bg-transparent px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
-                  href="#"
-                >
+
+              <div className="er-cta-actions">
+                <Link href="/visa-success-plan" className="er-btn er-btn-primary">
+                  Get your personalized visa plan
+                </Link>
+                <Link href="/germany/visa" className="er-btn er-btn-secondary">
                   Explore Germany guides
-                </a>
+                </Link>
               </div>
             </div>
           </section>
