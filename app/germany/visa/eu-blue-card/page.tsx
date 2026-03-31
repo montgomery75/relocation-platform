@@ -56,7 +56,7 @@ const faqSchema = {
       name: "Do I need German language skills for the EU Blue Card?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Not always for initial approval. Many Blue Card jobs, especially in international companies, do not require German at the start. But German can matter for daily life, long-term integration, and the faster permanent-residence pathway.",
+        text: "Not always for initial approval. Many Blue Card jobs, especially in international companies, do not require German at the start. But German can matter for daily life and for the faster settlement-permit path: A1 can qualify you after 27 months, while B1 can reduce the period to 21 months if the other requirements are met.",
       },
     },
     {
@@ -96,7 +96,7 @@ export default async function EuBlueCardPage() {
     },
     {
       q: "How long does it take to get permanent residence with the EU Blue Card?",
-      a: "EU Blue Card holders in Germany can usually qualify for permanent residence after 27 months, or after 21 months with B1 German, if the other legal requirements are met. This is why many applicants choose the Blue Card over other German work visas.",
+      a: "EU Blue Card holders in Germany can usually qualify for a settlement permit after 27 months with German at A1 level, or after 21 months with German at B1 level, if the other legal requirements are met. This is one of the main long-term advantages of the Blue Card.",
     },
   ];
 
@@ -193,7 +193,7 @@ export default async function EuBlueCardPage() {
     },
     {
       q: "Do I need German language skills for the EU Blue Card?",
-      a: "Not always for initial approval. Many Blue Card jobs, especially in international companies, do not require German at the start. But German can matter for daily life, long-term integration, and the faster permanent-residence pathway.",
+      a: "Not always for initial approval. Many Blue Card jobs, especially in international companies, do not require German at the start. But German can matter for daily life and for the faster settlement-permit path: A1 can qualify you after 27 months, while B1 can reduce the period to 21 months if the other requirements are met.",
     },
     {
       q: "Can IT specialists qualify without a university degree?",
@@ -317,7 +317,7 @@ export default async function EuBlueCardPage() {
                   ✔ Verified immigration information
                 </div>
                 <p className="mt-3 text-sm leading-6 text-emerald-900">
-                  Last fact-checked: March 27, 2026
+                  Last fact-checked: March 30, 2026
                 </p>
                 <p className="mt-2 text-sm leading-6 text-emerald-900">
                   Sources monitored: BAMF — Federal Office for Migration and
@@ -388,6 +388,17 @@ export default async function EuBlueCardPage() {
                       <li key={item}>• {item}</li>
                     ))}
                   </ul>
+                </div>
+
+                <div className="relative mt-5 rounded-2xl border border-blue-200 bg-white p-4">
+                  <p className="text-sm font-semibold text-slate-900">
+                    Permanent residence shortcut
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    Blue Card holders can generally qualify for a settlement
+                    permit after 27 months with A1 German, or after 21 months
+                    with B1 German, if the other requirements are met.
+                  </p>
                 </div>
 
                 <div className="relative rounded-3xl border border-blue-200 bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white shadow-md">
@@ -562,6 +573,17 @@ export default async function EuBlueCardPage() {
                 entering the labour market and to certain IT specialists under
                 the special experience-based route.
               </p>
+              <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4">
+                <p className="text-sm font-semibold text-slate-900">
+                  Important procedural detail
+                </p>
+                <p className="mt-2 text-sm leading-6 text-slate-700">
+                  If you are using the lower salary threshold for a shortage
+                  occupation, Federal Employment Agency approval is generally
+                  required. The same usually applies in the visa procedure for
+                  recent graduates using the reduced threshold.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -901,9 +923,9 @@ export default async function EuBlueCardPage() {
                   Permanent residence
                 </h3>
                 <p className="mt-2 text-sm leading-6 text-slate-700">
-                  In Germany, settlement can become possible after 27 months
-                  with basic German, or after 21 months with B1 German, if the
-                  other legal requirements are met.
+                  In Germany, a settlement permit can become possible after 27
+                  months with A1 German, or after 21 months with B1 German, if
+                  the other legal requirements are met.
                 </p>
               </article>
               <article className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
@@ -916,6 +938,18 @@ export default async function EuBlueCardPage() {
                   once you get to Germany.
                 </p>
               </article>
+            </div>
+            <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+              <h3 className="text-base font-semibold text-slate-900">
+                Settlement permit detail people often miss
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-slate-700">
+                For the settlement permit, language level is only one part of
+                the picture. Applicants also normally need to prove basic
+                knowledge of the legal and social system in Germany, usually via
+                the “Leben in Deutschland” test, alongside the other residence,
+                employment, and pension-contribution requirements.
+              </p>
             </div>
           </section>
 

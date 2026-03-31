@@ -249,7 +249,8 @@ export default async function GermanOpportunityCardPage() {
     },
     {
       title: "Age",
-      detail: "Under 35 can bring 2 points. Between 35 and 40 can bring 1 point.",
+      detail:
+        "Under 35 can bring 2 points. Between 35 and 40 can bring 1 point.",
     },
     {
       title: "Connection to Germany",
@@ -591,8 +592,8 @@ export default async function GermanOpportunityCardPage() {
               </p>
             </div>
 
-            <div className="mt-6 rounded-3xl border border-blue-200 bg-blue-50 p-6 shadow-sm">
-              <div className="flex items-center justify-between gap-4">
+            <div className="mt-6 rounded-3xl border border-blue-200 bg-blue-50 p-5 shadow-sm sm:p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold text-blue-700">
                     Not sure which path applies to you?
@@ -603,7 +604,7 @@ export default async function GermanOpportunityCardPage() {
                 </div>
                 <Link
                   href="#eligibility"
-                  className="whitespace-nowrap rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white"
+                  className="w-full rounded-2xl bg-blue-600 px-4 py-2 text-center text-sm font-semibold text-white sm:w-auto sm:whitespace-nowrap"
                 >
                   Check your Opportunity Card path
                 </Link>
@@ -722,8 +723,8 @@ export default async function GermanOpportunityCardPage() {
               ))}
             </div>
 
-            <div className="mt-6 rounded-3xl border border-blue-200 bg-blue-50 p-6 shadow-sm">
-              <div className="flex items-center justify-between gap-4">
+            <div className="mt-6 rounded-3xl border border-blue-200 bg-blue-50 p-5 shadow-sm sm:p-6">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold text-blue-700">
                     You don't need to do this alone
@@ -734,7 +735,7 @@ export default async function GermanOpportunityCardPage() {
                 </div>
                 <Link
                   href="#final-cta"
-                  className="whitespace-nowrap rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white"
+                  className="w-full rounded-2xl bg-blue-600 px-4 py-2 text-center text-sm font-semibold text-white sm:w-auto sm:whitespace-nowrap"
                 >
                   See your German Opportunity Card eligibility & next steps
                 </Link>
@@ -1073,11 +1074,11 @@ export default async function GermanOpportunityCardPage() {
           </section>
 
           <section className="mt-10 grid gap-6 lg:grid-cols-2">
-            <article className="rounded-3xl border border-rose-200 bg-rose-50 p-8 shadow-sm">
+            <article className="rounded-3xl border border-rose-200 bg-rose-50 p-6 shadow-sm sm:p-8">
               <p className="text-xs font-semibold text-rose-700">
                 🚫 Frequent failure points
               </p>
-              <h2 className="text-3xl font-semibold tracking-tight">
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
                 Common mistakes and rejection risks
               </h2>
               <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-700">
@@ -1087,9 +1088,9 @@ export default async function GermanOpportunityCardPage() {
               </ul>
             </article>
 
-            <article className="rounded-3xl border border-blue-200 bg-blue-50 p-8 shadow-sm">
+            <article className="rounded-3xl border border-blue-200 bg-blue-50 p-6 shadow-sm sm:p-8">
               <p className="text-xs font-semibold text-blue-700">💡 Key insight</p>
-              <h2 className="text-3xl font-semibold tracking-tight">
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
                 Most Opportunity Card problems are documentation problems
               </h2>
               <p className="mt-4 leading-8 text-slate-700">
@@ -1098,7 +1099,7 @@ export default async function GermanOpportunityCardPage() {
             </article>
 
             <div className="mt-6 rounded-3xl border border-white/60 bg-white p-5 shadow-sm lg:col-span-2">
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm font-semibold text-blue-700">
                     Get clear personalized instructions
@@ -1109,7 +1110,7 @@ export default async function GermanOpportunityCardPage() {
                 </div>
                 <Link
                   href="#final-cta"
-                  className="whitespace-nowrap rounded-2xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white"
+                  className="w-full rounded-2xl bg-blue-600 px-4 py-2 text-center text-sm font-semibold text-white sm:w-auto sm:whitespace-nowrap"
                 >
                   See your German Opportunity Card eligibility & next steps
                 </Link>
