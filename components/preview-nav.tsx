@@ -27,17 +27,17 @@ export default function PreviewNav() {
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          className="rounded-full px-3 py-1.5 text-xs font-semibold text-white shadow-md transition hover:opacity-95"
+          className="rounded-full px-7 py-4 text-base font-semibold text-white shadow-md transition hover:opacity-95"
           style={{ backgroundColor: "#8d9734" }}
           aria-expanded={open}
           aria-haspopup="menu"
-          aria-label="Open preview navigation"
         >
           Preview
         </button>
 
         {open && (
           <div className="relative mt-2 w-[300px] rounded-2xl border border-slate-200 bg-white p-4 shadow-xl">
+            {/* Highlighted intro */}
             <div className="rounded-xl border border-[#dfe6b5] bg-[#f4f6e5] px-3 py-2 text-sm font-semibold text-slate-800 shadow-sm">
               We are still building, but have a peek here:
             </div>
@@ -71,6 +71,7 @@ export default function PreviewNav() {
               </ul>
             </nav>
 
+            {/* Close button */}
             <button
               type="button"
               onClick={() => setOpen(false)}
