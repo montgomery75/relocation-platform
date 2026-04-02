@@ -1,4 +1,3 @@
-import PreviewNav from "@/components/preview-nav";
 import { getSettings } from "@/lib/sanity/client";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
@@ -71,7 +70,6 @@ export default async function Layout({ children, params }) {
   return (
     <>
       <Navbar {...settings} />
-      <PreviewNav />
       <div>{children}</div>
       <Footer {...settings} />
     </>
