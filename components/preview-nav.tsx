@@ -10,8 +10,8 @@ export default function PreviewNav() {
     { label: "Home", href: "/", level: 0 },
     { label: "Germany", href: "/germany", level: 1 },
     { label: "German Visas", href: "/germany/visa", level: 2 },
-    { label: "EU Blue Card", href: "/germany/visa/eu-blue-card", level: 3 },
-    { label: "Opportunity Card", href: "/germany/visa/opportunity-card", level: 3 }
+    { label: "EU Blue Card", href: "/germany/eu-blue-card", level: 3 },
+    { label: "Opportunity Card", href: "/germany/opportunity-card", level: 3 }
   ];
 
   const getIndent = (level: number) => {
